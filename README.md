@@ -27,7 +27,7 @@ O Cifralite é um sistema web inovador que torna mais fácil para os músicos, s
 3. **Clonando o Repositório:**
    - Abra o VSCode.
    - Pressione `Ctrl+Shift+P` para abrir a paleta de comandos.
-   - Digite "Git: Clone" e forneça o URL do repositório: `https://github.com/seu-usuario/cifralite.git`.
+   - Digite "Git: Clone" e forneça o URL do repositório: `https://github.com/manoelivisson/cifralite.git`.
    - Escolha o diretório onde deseja clonar o projeto.
 
 4. **Configuração do Banco de Dados:**
