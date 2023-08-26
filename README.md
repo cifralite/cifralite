@@ -27,6 +27,11 @@
 - Alguém vai revisar
 - Vamos adicionar a branch principal
 
+## Autores
+
+`Iury`
+`Manoel Ívisson de Araújo Ferreira`
+`Yago Cortez` 
 
 
 
