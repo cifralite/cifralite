@@ -23,4 +23,5 @@ btnConfirmar.onclick = function () {
     if (musicas.indexOf(musica) >= 0) { 
         musicas.splice(musicas.indexOf(musica), 1)
     }
+    modal.close()
 }
