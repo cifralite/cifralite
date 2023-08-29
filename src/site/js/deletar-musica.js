@@ -20,7 +20,6 @@ btnCancelar.onclick = function () {
 // Exclui a música da lista de músicas 
 // Obs.: Não retira a exibição da música exluída
 btnConfirmar.onclick = function () {
-    alert(musicas.length)
     if (musicas.indexOf(musica) >= 0) { 
         musicas.splice(musicas.indexOf(musica), 1)
     }
