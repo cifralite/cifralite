@@ -24,4 +24,7 @@ btnConfirmar.onclick = function () {
         musicas.splice(musicas.indexOf(musica), 1)
     }
     modal.close()
+    const divMain = document.getElementById("main")
+    divMain.removeChild(conteudo)
+    divMain.removeChild(cabecalho)
 }
