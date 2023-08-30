@@ -18,3 +18,11 @@
 .tempo {
     font-weight: lighter;
 }
+
+#informacoes {
+    display: inline;
+}
+
+.btn-delete {
+    margin-left: 0.8rem;
+}
