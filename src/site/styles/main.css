@@ -19,6 +19,10 @@
     font-weight: lighter;
 }
 
+#informacoes {
+    display: inline;
+}
+
 .btn-delete {
-    margin-top: 5px;
+    margin-left: 0.8rem;
 }
