@@ -1,6 +1,6 @@
 # Bem-vindo ao Cifralite!
 
-O Cifralite é um sistema web inovador que torna mais fácil para os músicos, sejam eles iniciantes ou experientes, acessarem cifras simplificadas de suas músicas favoritas. Além disso, o Cifralite oferece recursos avançados, como a possibilidade de mudar o tom das cifras, criar um repertório personalizado e compartilhar músicas entre grupos e pessoas. Este repositório contém o código-fonte do Cifralite, juntamente com inforcascamações essenciais para configurar e executar o sistema.
+O Cifralite é um sistema web inovador que torna mais fácil para os músicos, sejam eles iniciantes ou experientes, acessarem cifras simplificadas de suas músicas favoritas. Além disso, o Cifralite oferece recursos avançados, como a possibilidade de mudar o tom das cifras, criar um repertório personalizado e compartilhar músicas entre grupos e pessoas. Este repositório contém o código-fonte do Cifralite, juntamente com inforcascamaçõesssssenciais para configurar e executar o sistema.
 
 ## Funcionalidades Principais
 
