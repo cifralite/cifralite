@@ -1,5 +1,4 @@
 function SalvarMusicas(musicas = []) {
-    console.log(musicas)
     localStorage.setItem('musicas', JSON.stringify(musicas))
 }
 

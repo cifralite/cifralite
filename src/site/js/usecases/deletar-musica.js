@@ -1,4 +1,3 @@
-console.log(musicas)
 const modal = document.querySelector("dialog")
 const btnCancelar = document.getElementById("btn-cancelar")
 const btnConfirmar = document.getElementById("btn-confirmar")
@@ -21,7 +20,6 @@ btnCancelar.onclick = function () {
 
 // Exclui a música da lista de músicas 
 btnConfirmar.onclick = function () {
-    console.log(musica)
     if (musicas.indexOf(musica) >= 0) {
         musicas.splice(musicas.indexOf(musica), 1)
         SalvarMusicas(musicas)
