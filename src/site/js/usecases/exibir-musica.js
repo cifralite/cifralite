@@ -1,5 +1,5 @@
 
-let musica = LerMusicas()
+let musica = LerMusicas()[0]
 
 let titulo = document.getElementById('titulo')
 titulo.innerHTML = musica.titulo
@@ -11,26 +11,34 @@ let tempo = document.getElementById('tempo')
 tempo.innerHTML = `Tempo: ${musica.tempo}BPM`
 
 let conteudo = document.getElementById('conteudo')
-let divIntroducao = document.createElement('div')
-divIntroducao.id = 'introducao'
-conteudo.appendChild(divIntroducao)
 
-let divNotas = document.createElement('div')
-divNotas.classList.add('notas')
-divIntroducao.appendChild(divNotas)
+musica.secoes.forEach(secao => {
+    let divSecao = document.createElement('div')
+    divSecao.classList.add('secao')
+    divSecao.id = secao.nota
 
-musica.acordes.forEach(acorde => {
-    let divNotaComTempo = document.createElement('div')
-    divNotaComTempo.classList.add('nota-com-tempo')
-    divNotas.appendChild(divNotaComTempo)
+    let divAcordes = document.createElement('div')
+    divAcordes.classList.add('notas')
 
-    let tempo = document.createElement('small')
-    tempo.classList.add('tempo')
-    tempo.innerHTML = acorde.split('|')[1]
-    divNotaComTempo.appendChild(tempo)
+    secao.acordes.forEach(acorde => {
 
-    let nota = document.createElement('span')
-    nota.classList.add('nota')
-    nota.innerHTML = acorde.split('|')[0]
-    divNotaComTempo.appendChild(nota)
+        let divNotaComTempo = document.createElement('div')
+        divNotaComTempo.classList.add('nota-com-tempo')
+
+        let tempo = document.createElement('small')
+        tempo.classList.add('tempo')
+        tempo.innerHTML = acorde.tempo
+        divNotaComTempo.appendChild(tempo)
+
+        let nota = document.createElement('span')
+        nota.classList.add('nota')
+        nota.innerHTML = acorde.nota + acorde.complemento
+        divNotaComTempo.appendChild(nota)
+
+        divAcordes.appendChild(divNotaComTempo)
+
+    })
+
+    divSecao.appendChild(divAcordes)
+    conteudo.appendChild(divSecao)
 })
