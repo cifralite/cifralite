@@ -20,7 +20,7 @@ btnCancelar.onclick = function () {
 
 // Exclui a música da lista de músicas 
 btnConfirmar.onclick = function () {
-    if (musicas.indexOf(musica) >= 0) { 
+    if (musicas.indexOf(musica) >= 0) {
         musicas.splice(musicas.indexOf(musica), 1)
     }
     modal.close()
