@@ -41,6 +41,9 @@
             <h3 id="h3dialog">Tempo</h3>
             <input type="text" id="buttonTempo" name="buttonTempo" placeholder="Qual o tempo?">
             <br>
+            <h3 id="h3dialog">Seção</h3>
+            <input type="text" id="buttonSecao" name="buttonSecao" placeholder="Qual é a parte da música?">
+            <br>
             <form class="formAcordes" id="chordsForm">
                 <div id="chordsContainer">
                     <div class="chord-input">
@@ -58,13 +61,14 @@
         </dialog>
 
     </div>
-    <script src="js/database.js"></script>
-    <script src="js/models/musica.js"></script>
-    <script src="js/models/secao.js"></script>
+    
     <script src="js/models/acorde.js"></script>
+    <script src="js/models/secao.js"></script>
+    <script src="js/models/musica.js"></script>
+    <script src="js/database.js"></script>
     <script src="js/usecases/exibir-musica.js" type="text/javascript">
     </script>
-    <script src="js/adicionar-musica.js"></script>
+    <script src="js/usecases/adicionar-musica.js"></script>
     <script src="js/usecases/deletar-musica.js"></script>
 </body>
 

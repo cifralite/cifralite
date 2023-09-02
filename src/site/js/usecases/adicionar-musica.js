@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const tempoInput = document.getElementById("buttonTempo");
         const tomInput = document.getElementById("buttonTom");
         const tituloInput = document.getElementById("buttonTitulo");
+        const secaoInput = document.getElementById("buttonSecao");
 
         const tempoValor = tempoInput.value;
         const tomValor = tomInput.value;
         const tituloValor = tituloInput.value;
+        const secaoValor = secaoInput.value;
 
         // console.log("Valor do título:", tituloValor);
         // console.log("Qual tom está:", tomValor);
@@ -58,9 +60,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Itera pelos campos de entrada de acorde e obtém seus valores
         chordInputs.forEach(function (input) {
-            chordValues.push(input.value);
+            chordValues.push(Acorde.criarAcorde(input.value));
         });
 
         // console.log("Valores dos Acordes:", chordValues);
+        // console.log("Seção:", secaoValor);
+        
+        // Ler as musicas do localStorage
+        const musicas = LerMusicas();
+        
+        // Criar a nova musica
+        const novaMusica = new Musica(tituloValor, tomValor, tempoValor, secaoValor);
+
+        // Adicionar a nova musica no array de musicas
+        musicas.push(novaMusica);
+
+        // Salvar as musicas no localStorage
+        SalvarMusicas(musicas);
+
+
+
     });
 })
