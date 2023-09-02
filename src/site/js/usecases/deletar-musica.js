@@ -1,3 +1,5 @@
+let musicas = LerMusicas()
+
 const modal = document.querySelector("dialog")
 const btnCancelar = document.getElementById("btn-cancelar")
 const btnConfirmar = document.getElementById("btn-confirmar")
@@ -22,6 +24,7 @@ btnCancelar.onclick = function () {
 btnConfirmar.onclick = function () {
     if (musicas.indexOf(musica) >= 0) {
         musicas.splice(musicas.indexOf(musica), 1)
+        SalvarMusicas(musicas)
     }
     modal.close()
     const divMain = document.getElementById("main")
