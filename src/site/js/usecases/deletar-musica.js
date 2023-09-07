@@ -22,6 +22,7 @@ btnCancelar.onclick = function () {
 btnConfirmar.onclick = function () {
     if (musicas.indexOf(musica) >= 0) {
         musicas.splice(musicas.indexOf(musica), 1)
+        SalvarMusicas(musicas)
     }
     modal.close()
     const divMain = document.getElementById("main")

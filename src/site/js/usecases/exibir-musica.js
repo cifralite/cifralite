@@ -1,5 +1,5 @@
-
-let musica = LerMusicas()[0]
+var musicas = LerMusicas()
+var musica = musicas[0]
 
 let titulo = document.getElementById('titulo')
 titulo.innerHTML = musica.titulo
