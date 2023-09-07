@@ -1,4 +1,4 @@
-const modal = document.querySelector("dialog")
+const modal = document.getElementById("btn-delete")
 const btnCancelar = document.getElementById("btn-cancelar")
 const btnConfirmar = document.getElementById("btn-confirmar")
 const cabecalho = document.getElementById("cabecalho")
