@@ -1,5 +1,4 @@
-var musicas = LerMusicas()
-var musica = musicas[0]
+MusicaPorId()
 
 let titulo = document.getElementById('titulo')
 titulo.innerHTML = musica.titulo
