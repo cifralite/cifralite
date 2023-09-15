@@ -2,10 +2,16 @@ let conteudo = document.getElementById("conteudo")
 
 //Listar Músicas
 musicas.forEach(musica => {
-        let itemMusica = document.createElement("div");
+        let itemMusica = document.createElement("div")
+        itemMusica.classList.add("musica")
 
-        itemMusica.innerHTML += `<p>${musica.titulo}</p>`
+        let informacoes = document.createElement("div")
+        informacoes.classList.add("informacoes")
+
+        informacoes.innerHTML += `<h2>${musica.titulo}</h2>`
+        informacoes.innerHTML += `<p>Autor: não cadastrado</p>`
         conteudo.appendChild(itemMusica)
+        itemMusica.appendChild(informacoes)
 
         let botaoEscolherMusica = document.createElement("a")
         botaoEscolherMusica.setAttribute("href", "index.html")
