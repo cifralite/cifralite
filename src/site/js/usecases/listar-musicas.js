@@ -15,12 +15,7 @@ musicas.forEach(musica => {
 
         let botaoEscolherMusica = document.createElement("a")
         botaoEscolherMusica.setAttribute("href", "index.html")
-        botaoEscolherMusica.setAttribute("onclick", `AcessarMusica(${musica.id})`)
+        botaoEscolherMusica.setAttribute("onclick", `SalvarId(${musica.id})`)
         botaoEscolherMusica.innerHTML = `<span class="material-symbols-outlined">trending_flat</span>`
         itemMusica.appendChild(botaoEscolherMusica)
 });
-
-//Acessar Música escolhida
-function AcessarMusica(id) {
-    SalvarId(id)
-}
