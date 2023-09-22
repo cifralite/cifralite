@@ -1,6 +1,7 @@
 class Musica {
 
-    constructor(titulo, tom, tempo, secoes) {
+    constructor(id, titulo, tom, tempo, secoes) {
+        this.id = id
         this.titulo = titulo
         this.tom = tom
         this.tempo = tempo
