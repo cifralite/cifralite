@@ -38,47 +38,70 @@ document.addEventListener("DOMContentLoaded", function () {
     const enviar = document.getElementById("botao-enviar");
 
     enviar.addEventListener("click", function () {
+
+
         const tempoInput = document.getElementById("campo-tempo");
         const tomInput = document.getElementById("campo-tom");
         const tituloInput = document.getElementById("campo-titulo");
-        const secaoInput = document.getElementById("buttonSecao");
+        const conteudoInput = document.getElementById("conteudo-musica-texto");
 
         const tempoValor = tempoInput.value;
         const tomValor = tomInput.value;
         const tituloValor = tituloInput.value;
-        const secaoValor = secaoInput.value;
+        const conteudoValor = conteudoInput.value
 
-        // console.log("Valor do título:", tituloValor);
-        // console.log("Qual tom está:", tomValor);
-        // console.log("Qual o tempo:", tempoValor);
+        processarMusicas(tituloValor, tomValor, tempoValor, conteudoValor)
 
         const chordsForm = document.getElementById("chordsForm");
         const chordInputs = chordsForm.querySelectorAll(".chord");
 
-        // Armazena os valores dos acordes
         const chordValues = [];
 
-        // Itera pelos campos de entrada de acorde e obtém seus valores
         chordInputs.forEach(function (input) {
             chordValues.push(Acorde.criarAcorde(input.value));
         });
 
-        // console.log("Valores dos Acordes:", chordValues);
-        // console.log("Seção:", secaoValor);
-
-        // Ler as musicas do localStorage
         const musicas = LerMusicas();
 
-        // Criar a nova musica
         const novaMusica = new Musica(tituloValor, tomValor, tempoValor, secaoValor);
 
-        // Adicionar a nova musica no array de musicas
         musicas.push(novaMusica);
 
-        // Salvar as musicas no localStorage
         SalvarMusicas(musicas);
-
-
-
     });
+
+
 })
+
+function processarMusicas(titulo, tom, tempo, conteudoTexto = "") {
+
+    const secoes = []
+    const linhas = conteudoTexto.split('\n');
+
+    let secao = null
+
+    // linha = string
+    linhas.forEach(linha => {
+
+        if (linha.trim() === '') return;
+
+        const inicioDaSecao = linha.match(/^\[(.+)\]$/);
+        const fimDaSecao = linha.match(/^\[\/(.+)\]$/);
+
+        if (inicioDaSecao && !linha.includes('/')) {
+            secao = inicioDaSecao[1];
+            secoes[secao] = '';
+            return
+        }
+
+        if (fimDaSecao) {
+            secao = null;
+            return
+        }
+
+        secoes[secao] += linha + ' ';
+    });
+
+    console.log(secoes);
+}
+
