@@ -1,13 +1,13 @@
 // exibir dialog
-const button = document.getElementById("addDialogButton")
-const modalAdicionando = document.getElementById("addDialog")
-const buttonClose = document.getElementById("buttonClose")
+const button = document.getElementById("btn-adicionar-musica")
+const modalAdicionando = document.getElementById("adicionar-musica-modal")
+const botaoFechar = document.getElementById("botao-fechar")
 
 button.onclick = function () {
     modalAdicionando.showModal()
 }
 
-buttonClose.onclick = function () {
+botaoFechar.onclick = function () {
     modalAdicionando.close()
 }
 
@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // pegar os valores
 document.addEventListener("DOMContentLoaded", function () {
-    const enviar = document.getElementById("buttonEnviar");
+    const enviar = document.getElementById("botao-enviar");
 
     enviar.addEventListener("click", function () {
-        const tempoInput = document.getElementById("buttonTempo");
-        const tomInput = document.getElementById("buttonTom");
-        const tituloInput = document.getElementById("buttonTitulo");
+        const tempoInput = document.getElementById("campo-tempo");
+        const tomInput = document.getElementById("campo-tom");
+        const tituloInput = document.getElementById("campo-titulo");
         const secaoInput = document.getElementById("buttonSecao");
 
         const tempoValor = tempoInput.value;
@@ -65,10 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // console.log("Valores dos Acordes:", chordValues);
         // console.log("Seção:", secaoValor);
-        
+
         // Ler as musicas do localStorage
         const musicas = LerMusicas();
-        
+
         // Criar a nova musica
         const novaMusica = new Musica(tituloValor, tomValor, tempoValor, secaoValor);
 
