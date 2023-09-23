@@ -1,0 +1,16 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vscode": true,
+        "**/Properties": true,
+        "src\\Cifralite.Web/Properties": true
+    },
+    "explorerExclude.backup": {}
+}
