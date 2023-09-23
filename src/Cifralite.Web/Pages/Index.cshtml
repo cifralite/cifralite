@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <header>
+        <h1>Minha Lista de Músicas</h1>
+    </header>
+    <section id="conteudo">
+        @foreach (var musica in Model.Musicas)
+        {
+            <div class="musica">
+                <div class="informacoes">
+                    <h2>@musica.Titulo</h2>
+                    <p>Autor: @musica.Artista</p>
+                </div>
+                <a href="index.html" onclick="SalvarId(@musica.Id)">
+                    <span class="material-symbols-outlined">trending_flat</span>
+                </a>
+            </div>
+        }
+    </section>
+</div>
