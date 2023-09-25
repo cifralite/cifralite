@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{716504D6-08A1-4041-863B-EB88C9064EB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cifralite.Web", "src\Cifralite.Web\Cifralite.Web.csproj", "{1DD6074C-1372-40A3-9B23-560FFE5BD638}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cifralite.Web", "src\Cifralite.Web\Cifralite.Web.csproj", "{31E73385-9823-4CCB-B294-28D2333BB96E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,12 +16,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1DD6074C-1372-40A3-9B23-560FFE5BD638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DD6074C-1372-40A3-9B23-560FFE5BD638}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DD6074C-1372-40A3-9B23-560FFE5BD638}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DD6074C-1372-40A3-9B23-560FFE5BD638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E73385-9823-4CCB-B294-28D2333BB96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E73385-9823-4CCB-B294-28D2333BB96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E73385-9823-4CCB-B294-28D2333BB96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E73385-9823-4CCB-B294-28D2333BB96E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1DD6074C-1372-40A3-9B23-560FFE5BD638} = {716504D6-08A1-4041-863B-EB88C9064EB1}
+		{31E73385-9823-4CCB-B294-28D2333BB96E} = {716504D6-08A1-4041-863B-EB88C9064EB1}
 	EndGlobalSection
 EndGlobal

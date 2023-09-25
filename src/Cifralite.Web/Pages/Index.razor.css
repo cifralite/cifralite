@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-body {
-    background-color: var(--cor-escura);
-    margin: 0px;
-}
 
 header {
     background-color: white;
@@ -30,7 +26,7 @@ header {
 }
 
 h1 {
-    width: 350px;
+    text-align: center;
     margin: auto;
 }
 

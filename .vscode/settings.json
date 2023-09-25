@@ -12,5 +12,10 @@
         "**/Properties": true,
         "src\\Cifralite.Web/Properties": true
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "dotnet.defaultSolution": "Cifralite.sln",
+    "explorer.fileNesting.patterns": {
+        "*.razor": "${capture}.razor.css",
+        "appsettings.json": "appsettings.Development.json",
+    }
 }
