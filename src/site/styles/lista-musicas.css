@@ -12,6 +12,10 @@ header {
     padding: 10px;
 }
 
+#conteudo {
+    margin: 0.5rem;
+}
+
 .musica {
     max-width: 50rem;
     background-color: white;
@@ -36,7 +40,6 @@ h1 {
 h2, p {
     margin: 0px;
     padding: 5px 10px 5px;
-    /* display: inline-block; */
 }
 
 a {
