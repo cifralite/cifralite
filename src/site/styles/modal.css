@@ -30,3 +30,27 @@
 .chord {
     margin-bottom: 3px;
 }
+
+#modal-delete {
+    background-color: var(--cor-escura);
+    border-color: var(--cor-semi-escura);
+    color: white;
+}
+
+#modal-delete button {
+    border: none;
+    background-color: var(--cor-semi-escura);
+    color: white;
+    padding: 0.3rem;
+    margin-left: 2px;
+}
+
+#modal-delete button:hover {
+    box-shadow: 0.2rem 0.2rem black;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}

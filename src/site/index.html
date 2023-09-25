@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         rel="stylesheet" />
+        <link rel="stylesheet" href="styles/modal.css">
 </head>
 
 <body>
@@ -20,13 +21,16 @@
                 <span>|</span>
                 <span id="tempo"></span>
             </section>
+            <button id="btn-delete">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
         </header>
         <hr>
         <section id="conteudo">
         </section>
-        <dialog id="btn-delete">
+        <dialog id="modal-delete">
             <p>Tem certeza de que deseja remover essa música?</p>
-            <button id="btn-confirmar">Sim</button>
+            <button id="btn-confirmar"><a href="lista-musicas.html">Sim</a></button>
             <button id="btn-cancelar">Cancelar</button>
         </dialog>
 
