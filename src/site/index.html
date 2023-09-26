@@ -12,25 +12,66 @@
 </head>
 
 <body>
+    <nav>
+        <div class="espacoNavBar">
+            <a href="index.html">
+                <img id="iconVoltar" src="/cifralite/src/site/fotos/iconSeta.png" alt="Ícone voltar">
+            </a>
+        </div>
+        <div>
+            <a href="#">
+                <img id="logoNavBar" src="/cifralite/src/site/fotos/LogoNavBar.png" alt="logo Cifralite">
+            </a>
+        </div>
+        <div class="espacoNavBar">
+            <img id="iconMenu" src="/cifralite/src/site/fotos/iconMenu.png" alt="">
+        </div>
+    </nav>
+    <div id="contrasteNavBar"></div>
+
     <div id="main">
-        <header id="cabecalho">
+        <!-- <header id="cabecalho">
             <h1 id="titulo"></h1>
             <section id="informacoes">
                 <span id="tom"></span>
                 <span>|</span>
                 <span id="tempo"></span>
             </section>
-        </header>
-        <hr>
-        <section id="conteudo">
+        </header> -->
+
+        <section id="infoMusicas">
+            <div id="nomeMusica" class="blocoMusica">
+                <span id="titulo"></span>
+            </div>
+            <div class="tomMusica">
+                <span id="tom" class="blocoMusica"></span>
+                <div class="responsivoAumentarDiminuir">
+                    <p id="aumentarTom" class="blocoMusica">+</p>
+                    <p id="diminuirTom" class="blocoMusica">-</p>
+                </div>
+            </div>
+            <div class="blocoMusica" id="blocoLixeira">
+                <img src="/cifralite/src/site/fotos/iconLixeixa.png" alt="icone lixeira" id="iconLixeira">
+            </div>
+            <div class="blocoMusica" id="blocoEditarMusica">
+                <img src="/cifralite/src/site/fotos/iconEditarMusica.png" alt="icone editar música"
+                    id="iconEditarMusica">
+            </div>
         </section>
-        <dialog id="btn-delete">
+
+        <div id="container">
+            <section></section>
+        </div>
+
+        <!-- <section id="conteudo">
+        </section> -->
+        <!-- <dialog id="btn-delete">
             <p>Tem certeza de que deseja remover essa música?</p>
             <button id="btn-confirmar">Sim</button>
             <button id="btn-cancelar">Cancelar</button>
-        </dialog>
+        </dialog> -->
 
-        <button id="addDialogButton">Abrir modal</button>
+        <!-- <button id="addDialogButton">Abrir modal</button>
         <dialog id="addDialog">
             <h1>Adicionando músicas</h1>
 
@@ -58,7 +99,7 @@
             <br>
             <button id="buttonEnviar">Enviar</button>
             <button id="buttonClose">Fechar</button>
-        </dialog>
+        </dialog> -->
 
     </div>
 

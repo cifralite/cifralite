@@ -12,6 +12,6 @@ localStorage.setItem('musicas', JSON.stringify([new Musica('Santo Espirito', 'E'
         new Secao('Intro',
             [
                 Acorde.criarAcorde('E7(9)11+|8'),
-                Acorde.criarAcorde('A4|8'),
+                Acorde.criarAcorde('A4|8'),         
             ])
     ])]))

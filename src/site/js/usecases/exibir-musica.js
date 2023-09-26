@@ -5,12 +5,12 @@ let titulo = document.getElementById('titulo')
 titulo.innerHTML = musica.titulo
 
 let tom = document.getElementById('tom')
-tom.innerHTML = `Tom: ${musica.tom}`
+tom.innerHTML = `${musica.tom}`
 
-let tempo = document.getElementById('tempo')
-tempo.innerHTML = `Tempo: ${musica.tempo}BPM`
+// let tempo = document.getElementById('tempo')
+// tempo.innerHTML = `Tempo: ${musica.tempo}BPM`
 
-let conteudo = document.getElementById('conteudo')
+let conteudo = document.getElementById('container')
 
 musica.secoes.forEach(secao => {
     let divSecao = document.createElement('div')
