@@ -1,4 +1,6 @@
 ﻿@page "/"
+@inject NavigationManager NavigationManager
+@inject MusicaService MusicaService
 
 <PageTitle>Index</PageTitle>
 
@@ -62,8 +64,8 @@
 
         <br>
         <br>
-        <button id="botao-enviar" @onclick="() => AdicionarMusica()">Enviar</button>
-        <button id="botao-fechar" @onclick="() => FecharModalAdicionarMusica()">Fechar</button>
+        <button id="botao-enviar" @onclick="AdicionarMusica">Enviar</button>
+        <button id="botao-fechar" @onclick="FecharModalAdicionarMusica">Fechar</button>
     </div>
 
 }
@@ -99,14 +101,15 @@
 
     private void IrParaMusica(int id)
     {
+        NavigationManager.NavigateTo("/musicas/" + id);
         Console.WriteLine("Clicou na música " + id);
     }
 
     private void AdicionarMusica()
     {
 
-        new MusicaService().AdicionarMusica(Titulo, Tom, Tempo, Conteudo);
-        _mostrarModalAdicionarMusica = false;
+        MusicaService.AdicionarMusica(Titulo, Tom, Tempo, Conteudo);
+        FecharModalAdicionarMusica();
     }
 
 }

@@ -1,0 +1,41 @@
+@page "/musicas/{id:int}"
+@inject MusicaService MusicaService
+<BarraDeBusca Titulo="Barra De Pesquisa de Musica"></BarraDeBusca>
+
+@foreach (var musica in musicas)
+{
+    <p style="color: whitesmoke;">Titulo: @musica.Titulo</p>
+
+    foreach (var secao in musica.Secoes)
+    {
+        <p style="color: rgb(139, 122, 122);">@secao.Titulo</p>
+        foreach (var acorde in secao.Acordes)
+        {
+            <span style="color: rgb(139, 122, 122);">@(ConstruirNotaEmTexto(acorde))</span>
+        }
+    }
+}
+
+@code {
+
+    [Parameter]
+    public int id { get; set; }
+
+    private List<Musica> musicas = new List<Musica>();
+
+    protected override void OnInitialized()
+    {
+        musicas = MusicaService.ObterMusicas();
+    }
+
+    private string ConstruirNotaEmTexto(Acorde acorde)
+    {
+        if (string.IsNullOrEmpty(acorde.Baixo))
+        {
+            return acorde.Nota;
+        }
+
+        return $"{acorde.Nota}/{acorde.Baixo}";
+    }
+
+}
