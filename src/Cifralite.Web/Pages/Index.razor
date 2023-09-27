@@ -10,6 +10,8 @@
     </header>
 
     <button @onclick="() => MostrarModalAdicionarMusica()">+</button>
+    <ModalDeDeletarMusica/>
+    <button ><span class="material-symbols-outlined">delete</span></button>
 
     <section id="conteudo">
         @foreach (var musica in _musicas)
