@@ -1,8 +1,8 @@
-#addDialog::backdrop {
+#adicionar-musica-modal::backdrop {
     background-color: rgb(0 0 0 / .5);
 }
 
-#addDialog {
+#adicionar-musica-modal {
     border: none;
     border-radius: .5rem;
     box-shadow: 0 0 1em rgb(0 0 0 / .3);
@@ -10,7 +10,7 @@
     background-color: aliceblue;
 }
 
-#h3dialog {
+.helper-modal {
     display: inline-block;
     padding: 3px 7px;
     margin-bottom: -1px;
@@ -43,7 +43,7 @@
     color: white;
     padding: 0.3rem;
     margin-left: 2px;
-} 
+}
 
 #modal-delete button:hover {
     box-shadow: 0.2rem 0.2rem black;

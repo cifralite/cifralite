@@ -8,5 +8,6 @@ public class Musica
     public string Artista { get; set; } = string.Empty;
     public int Tempo { get; set; }
     public List<Secao> Secoes { get; set; } = new();
+    public string? Tom { get; internal set; }
 }
 

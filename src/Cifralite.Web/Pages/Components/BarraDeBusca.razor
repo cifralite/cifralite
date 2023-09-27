@@ -1,0 +1,18 @@
+<div>
+    <h1>@Titulo</h1>
+    <input @bind="_search" type="text" placeholder="search">
+    <button @onclick="ExibirValor">Exibir</button>
+</div>
+
+@code {
+
+    [Parameter]
+    public string Titulo { get; set; } = string.Empty;
+
+    private string _search;
+
+    private void ExibirValor()
+    {
+        Console.WriteLine(_search);
+    }
+}

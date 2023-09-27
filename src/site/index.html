@@ -34,34 +34,40 @@
             <button id="btn-cancelar">Cancelar</button>
         </dialog>
 
-        <button id="addDialogButton">Abrir modal</button>
-        <dialog id="addDialog">
-            <h1>Adicionando músicas</h1>
+        <button id="btn-adicionar-musica">Abrir modal</button>
+        <dialog id="adicionar-musica-modal">
+            <h1>Adicionar música</h1>
 
-            <h3 id="h3dialog">Título</h3>
-            <input type="text" id="buttonTitulo" name="buttoTitulo" placeholder="Qual é o título?">
-            <h3 id="h3dialog">Tom</h3>
-            <input type="text" id="buttonTom" name="buttonTom" placeholder="Qual é o tom?">
-            <h3 id="h3dialog">Tempo</h3>
-            <input type="text" id="buttonTempo" name="buttonTempo" placeholder="Qual o tempo?">
-            <br>
-            <h3 id="h3dialog">Seção</h3>
-            <input type="text" id="buttonSecao" name="buttonSecao" placeholder="Qual é a parte da música?">
-            <br>
-            <form class="formAcordes" id="chordsForm">
-                <div id="chordsContainer">
-                    <div class="chord-input">
-                        <label for="chord">Acorde:</label>
-                        <input type="text" class="chord" name="chord" placeholder="Nota|Tempo">
-                        <button type="button" class="add-chord-button">Add</button>
-                    </div>
-                </div>
-            </form>
+            <h3 class="helper-modal">Informações</h3>
+            <div class="adicionar-musica-info">
+                <input type="text" id="campo-titulo" class="input-texto" name="campo-titulo" placeholder="Título">
+                <select id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
+                    <option disabled value="" selected>Tom</option>
+                    <option value="C">C</option>
+                    <option value="C#">C#</option>
+                    <option value="D">D</option>
+                    <option value="D#">D#</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="F#">F#</option>
+                    <option value="G">G</option>
+                    <option value="G#">G#</option>
+                    <option value="A">A</option>
+                    <option value="A#">A#</option>
+                    <option value="B">B</option>
+                </select>
+                <input type="text" id="campo-tempo" class="input-texto" name="campo-tempo" placeholder="Tempo">
+            </div>
+
+            <h3 class="helper-modal">Acordes</h3>
+            <div class="musica-texto">
+                <textarea name="" id="conteudo-musica-texto" cols="30" rows="10"></textarea>
+            </div>
 
             <br>
             <br>
-            <button id="buttonEnviar">Enviar</button>
-            <button id="buttonClose">Fechar</button>
+            <button id="botao-enviar">Enviar</button>
+            <button id="botao-fechar">Fechar</button>
         </dialog>
 
     </div>
