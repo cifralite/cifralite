@@ -1,5 +1,4 @@
-
-let musica = LerMusicas()[0]
+MusicaPorId() // A variável música receberá a música que foi escolhida na página da lista de músicas
 
 let titulo = document.getElementById('titulo')
 titulo.innerHTML = musica.titulo

@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+body {
+    background-color: var(--cor-escura);
+    margin: 0px;
+}
+
+header {
+    background-color: white;
+    border-bottom: 20px solid var(--cor-semi-escura);
+    justify-content: center;
+    padding: 10px;
+}
+
+#conteudo {
+    margin: 0.5rem;
+}
+
+.musica {
+    max-width: 50rem;
+    background-color: white;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 2px 2px rgba(36, 123, 160, 50%);
+}
+
+.informacoes {
+    max-width: 95%;
+    width: 95rem;
+    flex-direction: column;
+}
+
+h1 {
+    width: 350px;
+    margin: auto;
+}
+
+h2, p {
+    margin: 0px;
+    padding: 5px 10px 5px;
+}
+
+a {
+    color: black;
+    padding: 10px;
+    background-color: var(--cor-semi-clara);
+    border-left: 2px solid var(--cor-escura);
+}
+
+a:hover {
+    color: white;
+}
+
+span.material-symbols-outlined {
+    font-size: 32px;
+    position: relative;
+    top: 8px;
+}
+

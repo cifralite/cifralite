@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+
+header {
+    background-color: white;
+    border-bottom: 20px solid var(--cor-semi-escura);
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.musica {
+    max-width: 50rem;
+    background-color: white;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 2px 2px rgba(36, 123, 160, 50%);
+}
+
+.informacoes {
+    max-width: 95%;
+    width: 95rem;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+}
+
+h2,
+p {
+    margin: 0px;
+    padding: 5px 10px 5px;
+    /* display: inline-block; */
+}
+
+a {
+    color: black;
+    padding: 10px;
+    background-color: var(--cor-semi-clara);
+    border-left: 2px solid var(--cor-escura);
+}
+
+a:hover {
+    color: white;
+}
+
+span.material-symbols-outlined {
+    font-size: 32px;
+    position: relative;
+    top: 8px;
+}
+
+#adicionar-musica-modal::backdrop {
+    background-color: rgb(0 0 0 / .5);
+}
+
+#adicionar-musica-modal {
+    border: none;
+    border-radius: .5rem;
+    box-shadow: 0 0 1em rgb(0 0 0 / .3);
+    width: 85%;
+    background-color: rgb(240, 240, 240);
+    max-width: 500px;
+    max-height: 120rem;
+}
+
+#adicionar-musica-modal>h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: .5rem;
+    padding: 10px;
+    background-color: #247ba0;
+    color: whitesmoke;
+    text-align: center;
+
+}
+
+.helper-modal {
+    display: flex;
+    padding: 3px 7px;
+    margin-bottom: -1px;
+    background-color: #247ba0;
+    color: whitesmoke;
+    border: none;
+    border-radius: .5rem;
+}
+
+.input-texto {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: .5rem;
+    padding: 7px;
+}
+
+.adicionar-musica-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+#campo-titulo {
+    border-radius: .5rem;
+    padding: 10px;
+    margin-right: 21px;
+    width: 17.0rem;
+    font-weight: bolder;
+}
+
+#campo-tom {
+    width: fit-content;
+    max-width: 5rem;
+    border-radius: .5rem;
+    padding: 10px;
+    margin-right: 21px;
+    color: #474747;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#campo-tempo {
+    width: fit-content;
+    max-width: 4.8rem;
+    border-radius: .5rem;
+    padding: 10px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.musica-texto {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 478px;
+}
+
+.musica-texto textarea {
+    border-radius: .5rem;
+    width: 100%;
+    height: 100%;
+    min-height: max-content;
+    font-size: 18px;
+    padding: 10px;
+    border-color: #006494;
+
+}
+
+button {
+    border: none;
+    border-radius: .5rem;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #247ba0;
+    color: whitesmoke;
+}

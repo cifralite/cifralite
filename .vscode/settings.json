@@ -1,0 +1,21 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vscode": true,
+        "**/Properties": true,
+        "src\\Cifralite.Web/Properties": true
+    },
+    "explorerExclude.backup": {},
+    "dotnet.defaultSolution": "Cifralite.sln",
+    "explorer.fileNesting.patterns": {
+        "*.razor": "${capture}.razor.css",
+        "appsettings.json": "appsettings.Development.json",
+    }
+}
