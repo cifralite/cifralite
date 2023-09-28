@@ -22,7 +22,7 @@ localStorage.setItem('musicas', JSON.stringify([new Musica(1, 'Santo Espirito', 
         new Secao('Intro',
             [
                 Acorde.criarAcorde('E7(9)11+|8'),
-                Acorde.criarAcorde('A4|8'),
+                Acorde.criarAcorde('A4|8'),         
             ])
     ]), new Musica(2, 'Deixa eu te usar', 'A', 90,
     [

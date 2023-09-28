@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 :root {
     --cor-clara: #1b98e0;
@@ -6,6 +6,149 @@
     --cor-semi-escura: #006494;
     --cor-escura: #13293d;
 }
+
+
+body {
+    background-color: #13293d;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#contrasteNavBar {
+    background-color: #006494;
+    height: 15px;
+}
+
+#logoNavBar {
+    padding: 5%;
+    width: 70%;
+}
+
+#iconMenu {
+    padding-bottom: 15%;
+    width: 70%;
+}
+
+#iconVoltar {
+    padding-bottom: 15%;
+    width: 70%;
+}
+
+.espacoNavBar {
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.blocoMusica {
+    background-color: #006494;
+    text-align: center;
+    box-shadow: 3px 3px black;
+    border-radius: 10px;
+    margin: 7px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    overflow: auto;
+}
+
+#infoMusicas {
+    color: white;
+    display: flex;
+    font-size: 20pt;
+    font-weight: bold;
+    width: 80%;
+    margin-top: 15px;
+}
+
+
+#nomeMusica {
+    width: 30%;
+    height: 103px;
+    line-height: 103px;
+    white-space: nowrap;
+}
+
+.tomMusica {
+    display: flex;
+    min-width: 25%;
+}
+
+#tom {
+    width: 60%;
+    height: 103px;
+    line-height: 103px;
+}
+
+.responsivoAumentarDiminuir {
+    min-width: 30%;
+}
+
+#aumentarTom,
+#diminuirTom {
+    width: 80%;
+    height: 48px;
+    line-height: 48px;
+}
+
+#blocoLixeira {
+    width: 20%;
+    height: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iconLixeira {
+    min-width: 34%;
+    max-height: 80%;
+    margin: 7px;
+}
+
+#blocoEditarMusica {
+    width: 20%;
+    height: 103px;
+    display: flex;
+    justify-content: center;
+}
+
+#iconEditarMusica {
+    min-width: 60%;
+    max-width: 70%;
+    margin: 7px;
+}
+
+#secaoDasMusicas {
+    background-color: red;
+    width: 1000px;
+    height: 100px;
+    font-weight: bold;
+}
+
+#container {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 1%;
+    font-size: 25pt;
+    width: 78.5%;
+    overflow: auto;
+}
+
+.nota-com-tempo {
+    margin: 1%;
+
 
 #introducao {
     border: 1px solid #000;
