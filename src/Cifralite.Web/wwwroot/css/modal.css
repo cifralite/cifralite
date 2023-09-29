@@ -31,6 +31,12 @@
     margin-bottom: 3px;
 }
 
+button {
+    border: none;
+    background-color: #247ba0;
+    color: whitesmoke;
+    border-radius: 0.5rem;
+}
 
 #modal-delete {
     background-color: var(--cor-escura);
@@ -40,6 +46,7 @@
 
 #modal-delete button {
     border: none;
+    border-radius: 0px;
     background-color: var(--cor-semi-escura);
     color: white;
     padding: 0.3rem;
