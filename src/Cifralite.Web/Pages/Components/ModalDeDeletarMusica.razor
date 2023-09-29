@@ -1,19 +1,23 @@
 @inject NavigationManager NavigationManager
 @inject MusicaService MusicaService
 
+<link rel="stylesheet" href="~/css/modal.css">
+
 <button @onclick="MostrarModalDeletarMusica"><span class="material-symbols-outlined">delete</span></button>
 
 @if (_mostrarModalDeletarMusica) {
     <div class="modal-overlay open">
         <div class="modal open">
             <p>Tem certeza de que deseja remover essa música?</p>
-            <button id="btn-confirmar" @onclick="IrParaListaDeMusicas">Sim</button>
+            <button id="btn-confirmar" @onclick="() => DeletarMusica(IdMusica)">Sim</button>
             <button id="btn-cancelar" @onclick="FecharModalDeletarMusica">Cancelar</button>
         </div>
     </div>
 }
 
 @code {
+    [Parameter]
+    public int IdMusica { get; set; }
     private bool _mostrarModalDeletarMusica = false;
 
     private void MostrarModalDeletarMusica(){
@@ -22,6 +26,12 @@
 
     private void FecharModalDeletarMusica(){
         _mostrarModalDeletarMusica = false;
+    }
+
+    private void DeletarMusica(int id) {
+        FecharModalDeletarMusica();
+        MusicaService.RemoverMusica(id);
+        IrParaListaDeMusicas();
     }
 
     private void IrParaListaDeMusicas() {
