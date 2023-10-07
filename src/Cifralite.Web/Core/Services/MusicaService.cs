@@ -76,5 +76,9 @@ namespace Cifralite.Web.Core.Services
             BancoDeDadosFake.Add(musica);
             return musica.Id;
         }
+
+        public void RemoverMusica(int id) {
+            BancoDeDadosFake.Remove(id);
+        } 
     }
 }
