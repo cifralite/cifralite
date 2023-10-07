@@ -1,0 +1,27 @@
+@inject NavigationManager Navigation
+
+<nav>
+    <div class="espacoNavBar">
+            <button @onclick="VoltarPaginaAnteriorQueEstava" class="botãoNavBar">
+                <img id="iconVoltar" src="fotos/iconSeta.png" alt="Ícone voltar">
+            </button>
+    </div>
+    <div>
+        <a href="/" class="botãoNavBar">
+            <img id="logoNavBar" src="fotos/LogoNavBar.png" alt="logo Cifralite">
+        </a>
+    </div>
+    <div class="espacoNavBar">
+        <img id="iconMenu" src="fotos/iconMenu.png" alt="Ícone menu">
+    </div>
+</nav>
+<div id="contrasteNavBar"></div>
+
+@code {
+    @* Método que volta para página anterior que estava usando o histórico de navegação *@
+    private void VoltarPaginaAnteriorQueEstava()
+    {
+        Navigation.NavigateTo("javascript:history.back()");
+    }
+}
+

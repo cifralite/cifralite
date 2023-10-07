@@ -1,13 +1,6 @@
 @charset "UTF-8";
 
 
-header {
-    background-color: white;
-    border-bottom: 20px solid var(--cor-semi-escura);
-    justify-content: center;
-    padding: 10px;
-}
-
 
 .musica {
     max-width: 50rem;
@@ -37,14 +30,14 @@ p {
     /* display: inline-block; */
 }
 
-a {
+.musica a {
     color: black;
     padding: 10px;
     background-color: var(--cor-semi-clara);
     border-left: 2px solid var(--cor-escura);
 }
 
-a:hover {
+.musica a:hover {
     color: white;
 }
 

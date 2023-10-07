@@ -1,8 +1,48 @@
 @page "/musicas/{id:int}"
 @inject MusicaService MusicaService
-<BarraDeBusca Titulo="Barra De Pesquisa de Musica"></BarraDeBusca>
 
-@foreach (var musica in musicas)
+<NavBar/>
+<div id=main>
+@* <BarraDeBusca Titulo="Barra De Pesquisa de Musica"></BarraDeBusca> *@
+
+    <section id="infoMusicas">
+        <div id="nomeMusica" class="blocoMusica">
+            <span id="titulo">@musicas[id-1].Titulo</span>
+        </div>
+        <div class="tomMusica">
+            <span id="tom" class="blocoMusica">@musicas[id-1].Tom</span>
+            <div class="responsivoAumentarDiminuir">
+                <p id="aumentarTom" class="blocoMusica">+</p>
+                <p id="diminuirTom" class="blocoMusica">-</p>
+            </div>
+        </div>
+        <div class="blocoMusica" id="blocoLixeira">
+            <img src="fotos/iconLixeixa.png" alt="icone lixeira" id="iconLixeira">
+        </div>
+        <div class="blocoMusica" id="blocoEditarMusica">
+            <img src="fotos/iconEditarMusica.png" alt="icone editar música" id="iconEditarMusica">
+        </div>
+    </section>
+            
+    @foreach (var secao in musicas[id-1].Secoes)
+    {
+        <div class="secoes">
+            <section>
+                <p id="TituloSecao">@secao.Titulo</p>
+                <div class="Acordes">
+                    @foreach (var acorde in secao.Acordes)
+                    {    
+                        <section class="notasContruidas">
+                            <div class="tempo">@(ConstruirTempoEmTexto(acorde))</div>
+                            <div class="notas">@(ConstruirNotaEmTexto(acorde))</div>
+                        </section>
+                    }
+                </div>
+            </section>
+        </div>
+    }
+
+@* @foreach (var musica in musicas)
 {
     <p style="color: whitesmoke;">Titulo: @musica.Titulo</p>
 
@@ -14,7 +54,8 @@
             <span style="color: rgb(139, 122, 122);">@(ConstruirNotaEmTexto(acorde))</span>
         }
     }
-}
+} *@
+</div>
 
 @code {
 
@@ -36,6 +77,13 @@
         }
 
         return $"{acorde.Nota}/{acorde.Baixo}";
+    }
+
+    private string ConstruirTempoEmTexto(Acorde acorde)
+    {
+        int acordeTempoInt = acorde.Tempo;
+        string acordeTempoString = acordeTempoInt.ToString();
+        return acordeTempoString;
     }
 
 }
