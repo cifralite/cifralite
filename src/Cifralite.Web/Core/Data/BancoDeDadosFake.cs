@@ -43,7 +43,8 @@ namespace Cifralite.Web.Core.Services
                             }
                             }
                         }
-                    }
+                    },
+                    Tom = "C"
                 },
                 new Musica
                 {
@@ -78,7 +79,8 @@ namespace Cifralite.Web.Core.Services
                             }
                             }
                         }
-                    }
+                    },
+                    Tom = "C"
                 },
                 new Musica
                 {
@@ -112,8 +114,46 @@ namespace Cifralite.Web.Core.Services
                                     Tempo = 8
                             }
                             }
+                        },
+                        new Secao
+                        {
+                            Titulo = "Refrão",
+                            Acordes = new List<Acorde>
+                            {
+                            new Acorde {
+                                    Nota = "E",
+                                    Baixo = "",
+                                    Complemento = "7M",
+                                    Tempo = 8
+                                },
+                                new Acorde {
+                                    Nota = "B",
+                                    Baixo = "",
+                                    Complemento = "9",
+                                    Tempo = 8
+                                },
+                                new Acorde {
+                                    Nota = "E",
+                                    Baixo = "",
+                                    Complemento = "",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "F",
+                                    Baixo = "",
+                                    Complemento = "",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "F",
+                                    Baixo = "C",
+                                    Complemento = "7M",
+                                    Tempo = 8
+                            }
+                            }
                         }
-                    }
+                    },
+                    Tom = "C"
                 },
             });
         }
