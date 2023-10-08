@@ -1,32 +1,6 @@
-﻿@page "/"
-@inject NavigationManager NavigationManager
 @inject MusicaService MusicaService
 
-<PageTitle>Index</PageTitle>
-
-<NavBar/>
-
-<div>
-    <button @onclick="() => MostrarModalAdicionarMusica()">+</button>
-    <ModalDeDeletarMusica IdMusica="1" />
-
-    <section id="conteudo">
-        @foreach (var musica in _musicas)
-        {
-                <div class="musica">
-                    <div class="informacoes">
-                        <h2>@musica.Titulo</h2>
-                        <p>Autor: @musica.Artista</p>
-                    </div>
-                    <a href="#" @onclick="() => IrParaMusica(musica.Id)">
-                        <span class="material-symbols-outlined">trending_flat</span>
-                    </a>
-                </div>
-        }
-    </section>
-</div>
-
-<ModalAdicionarMusica />
+<button @onclick="() => MostrarModalAdicionarMusica()">+</button>
 
 @if (_mostrarModalAdicionarMusica)
 {
@@ -72,24 +46,15 @@
 }
 
 @code {
-
-    private List<Musica> _musicas = new List<Musica>();
     private bool _mostrarModalAdicionarMusica = false;
-
-
+    
     //VariaveisDoModal
     public string Titulo { get; set; } = "";
     public string Tom { get; set; } = "";
     public int Tempo { get; set; }
     public string Conteudo { get; set; } = "";
 
-    // Métodos
-
-    protected override void OnInitialized()
-    {
-        _musicas = new MusicaService().ObterMusicas();
-    }
-
+    //Métodos
     private void MostrarModalAdicionarMusica()
     {
         _mostrarModalAdicionarMusica = true;
@@ -100,17 +65,10 @@
         _mostrarModalAdicionarMusica = false;
     }
 
-    private void IrParaMusica(int id)
-    {
-        NavigationManager.NavigateTo("/musicas/" + id);
-        Console.WriteLine("Clicou na música " + id);
-    }
-
     private void AdicionarMusica()
     {
 
         MusicaService.AdicionarMusica(Titulo, Tom, Tempo, Conteudo);
         FecharModalAdicionarMusica();
     }
-
 }
