@@ -21,7 +21,11 @@
     background-color: #247ba0;
     color: whitesmoke;
     text-align: center;
+    font-size: 32px;
+}
 
+#adicionar-musica-modal>h3 {
+    font-size: 18.2px;
 }
 
 .helper-modal {
@@ -103,6 +107,7 @@
     margin-bottom: 10px;
     background-color: #247ba0;
     color: whitesmoke;
+    text-align: left;
 }
 
 /* button {

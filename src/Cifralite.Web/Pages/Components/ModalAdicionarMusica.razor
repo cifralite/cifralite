@@ -1,6 +1,7 @@
 @inject MusicaService MusicaService
+@inject NavigationManager NavigationManager
 
-<button @onclick="() => MostrarModalAdicionarMusica()">+</button>
+<button @onclick="() => MostrarModalAdicionarMusica()"></button>
 
 @if (_mostrarModalAdicionarMusica)
 {
@@ -8,7 +9,7 @@
         <div class="modal-overlay open"></div>
 
         <div id="adicionar-musica-modal" class="modal open">
-            <h1>Adicionar música</h1>
+            <h1>@_tituloModal</h1>
 
             <h3 class="helper-modal">Informações</h3>
             <div class="adicionar-musica-info">
@@ -39,19 +40,31 @@
 
             <br>
             <br>
-            <button id="botao-enviar" @onclick="AdicionarMusica">Enviar</button>
+            @if (_tituloModal == "Editar Música") {
+                <button id="botao-enviar" @onclick="AtualizarMusica">Enviar</button>
+            } else {
+                <button id="botao-enviar" @onclick="AdicionarMusica">Enviar</button>
+            }
             <button id="botao-fechar" @onclick="FecharModalAdicionarMusica">Fechar</button>
         </div>
 
 }
 
 @code {
+    [Parameter]
+    public string _tituloModal {get; set;} = string.Empty;
     private bool _mostrarModalAdicionarMusica = false;
     
     //VariaveisDoModal
+    [Parameter]
+    public int Id { get; set; }
+    [Parameter]
     public string Titulo { get; set; } = "";
+    [Parameter]
     public string Tom { get; set; } = "";
+    [Parameter]
     public int Tempo { get; set; }
+    [Parameter]
     public string Conteudo { get; set; } = "";
 
     //Métodos
@@ -67,8 +80,14 @@
 
     private void AdicionarMusica()
     {
-
         MusicaService.AdicionarMusica(Titulo, Tom, Tempo, Conteudo);
         FecharModalAdicionarMusica();
+    }
+
+    private void AtualizarMusica() 
+    {
+        MusicaService.AtualizarMusica();
+        FecharModalAdicionarMusica();
+        NavigationManager.NavigateTo($"/musicas/{Id}" , true);
     }
 }

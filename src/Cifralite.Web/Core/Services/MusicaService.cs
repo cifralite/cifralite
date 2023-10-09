@@ -79,6 +79,10 @@ namespace Cifralite.Web.Core.Services
 
         public void RemoverMusica(int id) {
             BancoDeDadosFake.Remove(id);
+        }
+
+        public void AtualizarMusica() {
+            // BancoDeDadosFake.Update();
         } 
     }
 }
