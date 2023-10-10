@@ -13,9 +13,9 @@
 
             <h3 class="helper-modal">Informações</h3>
             <div class="adicionar-musica-info">
-                <input @bind="Titulo" type="text" id="campo-titulo" class="input-texto" name="campo-titulo"
+                <input @bind="Musica.Titulo" type="text" id="campo-titulo" class="input-texto" name="campo-titulo"
                     placeholder="Título">
-                <select @bind="Tom" id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
+                <select @bind="Musica.Tom" id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
                     <option disabled value="" selected>Tom</option>
                     <option value="C">C</option>
                     <option value="C#">C#</option>
@@ -30,7 +30,7 @@
                     <option value="A#">A#</option>
                     <option value="B">B</option>
                 </select>
-                <input @bind="Tempo" type="text" id="campo-tempo" class="input-texto" name="campo-tempo" placeholder="Tempo">
+                <input @bind="Musica.Tempo" type="text" id="campo-tempo" class="input-texto" name="campo-tempo" placeholder="Tempo">
             </div>
 
             <h3 class="helper-modal">Acordes</h3>
@@ -48,13 +48,10 @@
 
 @code {
     [Parameter]
-    public Musica _musica {get; set;} = new();
+    public Musica Musica {get; set;} = new();
     private bool _mostrarModalAdicionarMusica = false;
     
     //VariaveisDoModal
-    public string Titulo { get; set; } = "";
-    public string? Tom { get; set; } = "";
-    public int Tempo { get; set; }
     public string Conteudo { get; set; } = "";
 
     //Métodos
@@ -72,18 +69,14 @@
      private void PrepararModalAtualizarMusica()
     {
         MostrarModalAtualizarMusica();
-        Titulo = _musica.Titulo;
-        Tom = _musica.Tom;
-        Tempo = _musica.Tempo;
         FormatarMusicaParaTexto();
-        
     }
 
     private void FormatarMusicaParaTexto(){
         //Limpar Conteúdo
         Conteudo = "";
 
-        foreach (var secao in _musica.Secoes) {
+        foreach (var secao in Musica.Secoes) {
             Conteudo += $"[{secao.Titulo}]";
             Conteudo += "\n\n";
 
@@ -91,7 +84,7 @@
                 if (acorde.Baixo == "") {
                     Conteudo += $"{acorde.Nota}{acorde.Complemento}|{acorde.Tempo} ";
                 } else {
-                    Conteudo += $"{acorde.Nota}{acorde.Complemento}/{acorde.Baixo}|{acorde.Tempo} ";
+                    Conteudo += $"{acorde.Nota}{acorde.Complemento}|{acorde.Baixo}|{acorde.Tempo} ";
                 }
             }
 
@@ -103,8 +96,8 @@
 
     private void AtualizarMusica() 
     {
-        @* MusicaService.AtualizarMusica(); *@
+        MusicaService.AtualizarMusica(Musica, Conteudo);
         FecharModalAtualizarMusica();
-        @* NavigationManager.NavigateTo($"/musicas/{Id}" , true); *@
+        NavigationManager.NavigateTo($"/musicas/{Musica.Id}" , true);
     }
 }

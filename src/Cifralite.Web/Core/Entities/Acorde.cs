@@ -25,7 +25,7 @@ public class Acorde
             acorde.Tempo = int.Parse(notaDividida[1]);
         }
 
-        if (notaDividida[0].Contains("#"))
+        if (notaDividida[0].Contains("#") || notaDividida[0].Contains("m"))
         {
             acorde.Nota = notaDividida[0][..2];
             acorde.Complemento = notaDividida[0][2..];
