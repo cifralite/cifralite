@@ -20,7 +20,7 @@
             <img src="fotos/iconLixeixa.png" alt="icone lixeira" id="iconLixeira">
         </div>
         <div class="blocoMusica" id="blocoEditarMusica">
-            <ModalAdicionarMusica _tituloModal="Editar Música" Id="@musicas[id-1].Id" Titulo="@musicas[id-1].Titulo" Tom="@musicas[id-1].Tom" Tempo="musicas[id-1].Tempo" Conteudo="@MusicaEmTexto"/>
+            <ModalAtualizarMusica _musica="@musicas[id-1]" />
             <img src="fotos/iconEditarMusica.png" alt="icone editar música" id="iconEditarMusica">
         </div>
     </section>
@@ -63,14 +63,11 @@
     [Parameter]
     public int id { get; set; }
 
-    public string MusicaEmTexto {get; set;} = string.Empty;
-
     private List<Musica> musicas = new List<Musica>();
 
     protected override void OnInitialized()
     {
         musicas = MusicaService.ObterMusicas();
-        Escrever();
     }
 
     private string ConstruirNotaEmTexto(Acorde acorde)
@@ -88,24 +85,5 @@
         int acordeTempoInt = acorde.Tempo;
         string acordeTempoString = acordeTempoInt.ToString();
         return acordeTempoString;
-    }
-
-    private void Escrever(){
-        foreach (var secao in musicas[id-1].Secoes) {
-            MusicaEmTexto += $"[{secao.Titulo}]";
-            MusicaEmTexto += "\n\n";
-
-            foreach (var acorde in secao.Acordes) {    
-                if (acorde.Baixo == "") {
-                    MusicaEmTexto += $"{acorde.Nota}{acorde.Complemento}|{acorde.Tempo} ";
-                } else {
-                    MusicaEmTexto += $"{acorde.Nota}{acorde.Complemento}/{acorde.Baixo}|{acorde.Tempo} ";
-                }
-            }
-
-            MusicaEmTexto += "\n\n";
-            MusicaEmTexto += $"[/{secao.Titulo}]";
-            MusicaEmTexto += "\n\n";
-        }
     }
 }

@@ -1,7 +1,7 @@
 @inject MusicaService MusicaService
 @inject NavigationManager NavigationManager
 
-<button @onclick="() => MostrarModalAdicionarMusica()"></button>
+<button @onclick="() => PrepararModalAtualizarMusica()"></button>
 
 @if (_mostrarModalAdicionarMusica)
 {
@@ -9,7 +9,7 @@
         <div class="modal-overlay open"></div>
 
         <div id="adicionar-musica-modal" class="modal open">
-            <h1>Adicionar Música</h1>
+            <h1>Editar Música</h1>
 
             <h3 class="helper-modal">Informações</h3>
             <div class="adicionar-musica-info">
@@ -40,35 +40,71 @@
 
             <br>
             <br>
-            <button id="botao-enviar" @onclick="AdicionarMusica">Enviar</button>
-            <button id="botao-fechar" @onclick="FecharModalAdicionarMusica">Fechar</button>
+            <button id="botao-enviar" @onclick="AtualizarMusica">Editar</button>
+            <button id="botao-fechar" @onclick="FecharModalAtualizarMusica">Fechar</button>
         </div>
 
 }
 
 @code {
+    [Parameter]
+    public Musica _musica {get; set;} = new();
     private bool _mostrarModalAdicionarMusica = false;
     
     //VariaveisDoModal
     public string Titulo { get; set; } = "";
-    public string Tom { get; set; } = "";
+    public string? Tom { get; set; } = "";
     public int Tempo { get; set; }
     public string Conteudo { get; set; } = "";
 
     //Métodos
-    private void MostrarModalAdicionarMusica()
+
+    private void MostrarModalAtualizarMusica()
     {
         _mostrarModalAdicionarMusica = true;
     }
 
-    private void FecharModalAdicionarMusica()
+    private void FecharModalAtualizarMusica()
     {
         _mostrarModalAdicionarMusica = false;
     }
 
-    private void AdicionarMusica()
+     private void PrepararModalAtualizarMusica()
     {
-        MusicaService.AdicionarMusica(Titulo, Tom, Tempo, Conteudo);
-        FecharModalAdicionarMusica();
+        MostrarModalAtualizarMusica();
+        Titulo = _musica.Titulo;
+        Tom = _musica.Tom;
+        Tempo = _musica.Tempo;
+        FormatarMusicaParaTexto();
+        
+    }
+
+    private void FormatarMusicaParaTexto(){
+        //Limpar Conteúdo
+        Conteudo = "";
+
+        foreach (var secao in _musica.Secoes) {
+            Conteudo += $"[{secao.Titulo}]";
+            Conteudo += "\n\n";
+
+            foreach (var acorde in secao.Acordes) {    
+                if (acorde.Baixo == "") {
+                    Conteudo += $"{acorde.Nota}{acorde.Complemento}|{acorde.Tempo} ";
+                } else {
+                    Conteudo += $"{acorde.Nota}{acorde.Complemento}/{acorde.Baixo}|{acorde.Tempo} ";
+                }
+            }
+
+            Conteudo += "\n\n";
+            Conteudo += $"[/{secao.Titulo}]";
+            Conteudo += "\n\n";
+        }
+    }
+
+    private void AtualizarMusica() 
+    {
+        @* MusicaService.AtualizarMusica(); *@
+        FecharModalAtualizarMusica();
+        @* NavigationManager.NavigateTo($"/musicas/{Id}" , true); *@
     }
 }
