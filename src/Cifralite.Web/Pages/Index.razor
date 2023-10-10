@@ -7,7 +7,7 @@
 <NavBar/>
 
 <div>
-    <button @onclick="() => MostrarModalAdicionarMusica()">+</button>
+    <ModalAdicionarMusica />
     <ModalDeDeletarMusica IdMusica="1" />
 
     <section id="conteudo">
@@ -26,76 +26,13 @@
     </section>
 </div>
 
-@if (_mostrarModalAdicionarMusica)
-{
-
-        <div class="modal-overlay open"></div>
-
-        <div id="adicionar-musica-modal" class="modal open">
-            <h1>Adicionar música</h1>
-
-            <h3 class="helper-modal">Informações</h3>
-            <div class="adicionar-musica-info">
-                <input @bind="Titulo" type="text" id="campo-titulo" class="input-texto" name="campo-titulo"
-                    placeholder="Título">
-                <select @bind="Tom" id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
-                    <option disabled value="" selected>Tom</option>
-                    <option value="C">C</option>
-                    <option value="C#">C#</option>
-                    <option value="D">D</option>
-                    <option value="D#">D#</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="F#">F#</option>
-                    <option value="G">G</option>
-                    <option value="G#">G#</option>
-                    <option value="A">A</option>
-                    <option value="A#">A#</option>
-                    <option value="B">B</option>
-                </select>
-                <input @bind="Tempo" type="text" id="campo-tempo" class="input-texto" name="campo-tempo" placeholder="Tempo">
-            </div>
-
-            <h3 class="helper-modal">Acordes</h3>
-            <div class="musica-texto">
-                <textarea @bind="Conteudo" name="" id="conteudo-musica-texto" cols="30" rows="10"></textarea>
-            </div>
-
-            <br>
-            <br>
-            <button id="botao-enviar" @onclick="AdicionarMusica">Enviar</button>
-            <button id="botao-fechar" @onclick="FecharModalAdicionarMusica">Fechar</button>
-        </div>
-
-}
-
 @code {
 
     private List<Musica> _musicas = new List<Musica>();
-    private bool _mostrarModalAdicionarMusica = false;
-
-
-    //VariaveisDoModal
-    public string Titulo { get; set; } = "";
-    public string Tom { get; set; } = "";
-    public int Tempo { get; set; }
-    public string Conteudo { get; set; } = "";
-
-    // Métodos
 
     protected override void OnInitialized()
     {
         _musicas = new MusicaService().ObterMusicas();
-    }
-
-    private void MostrarModalAdicionarMusica()
-    {
-        _mostrarModalAdicionarMusica = true;
-    }
-
-    private void FecharModalAdicionarMusica()
-    {
-        _mostrarModalAdicionarMusica = false;
     }
 
     private void IrParaMusica(int id)
@@ -103,12 +40,4 @@
         NavigationManager.NavigateTo("/musicas/" + id);
         Console.WriteLine("Clicou na música " + id);
     }
-
-    private void AdicionarMusica()
-    {
-
-        MusicaService.AdicionarMusica(Titulo, Tom, Tempo, Conteudo);
-        FecharModalAdicionarMusica();
-    }
-
 }

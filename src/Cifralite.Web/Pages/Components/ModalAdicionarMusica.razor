@@ -1,7 +1,7 @@
 @inject MusicaService MusicaService
 @inject NavigationManager NavigationManager
 
-<button @onclick="() => MostrarModalAdicionarMusica()"></button>
+<button id="botao-adicionar" @onclick="() => MostrarModalAdicionarMusica()">+</button>
 
 @if (_mostrarModalAdicionarMusica)
 {
