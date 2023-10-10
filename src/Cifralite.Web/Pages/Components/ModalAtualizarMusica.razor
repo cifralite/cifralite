@@ -1,7 +1,9 @@
 @inject MusicaService MusicaService
 @inject NavigationManager NavigationManager
 
-<button @onclick="() => PrepararModalAtualizarMusica()"></button>
+<button id="botao-atualizar" @onclick="() => PrepararModalAtualizarMusica()">
+    <img src="/fotos/iconEditarMusica.png" alt="icone editar musica">
+</button>
 
 @if (_mostrarModalAdicionarMusica)
 {

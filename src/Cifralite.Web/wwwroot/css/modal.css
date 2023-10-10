@@ -110,12 +110,13 @@
     text-align: left;
 }
 
-/* button {
+#botao-atualizar {
     border: none;
-    background-color: #247ba0;
+    width: 100%;
+    background-color: var(--cor-semi-escura);
     color: whitesmoke;
     border-radius: 0.5rem;
-}  */
+} 
 
 /* Modal de Deletar*/
 
