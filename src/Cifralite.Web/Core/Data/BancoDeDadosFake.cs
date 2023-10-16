@@ -178,5 +178,12 @@ namespace Cifralite.Web.Core.Services
         {
             Musicas.RemoveAll(m => m.Id == id);
         }
+
+        public static void Update(Musica musica)
+        {
+            var MusicaAntiga = Musicas.First(x => x.Id == musica.Id);
+            var index = Musicas.IndexOf(MusicaAntiga);
+            Musicas[index] = musica;
+        } 
     }
 }
