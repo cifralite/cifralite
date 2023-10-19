@@ -13,38 +13,255 @@ namespace Cifralite.Web.Core.Services
                 new Musica
                 {
                     Id = 1,
-                    Titulo = "Deixa eu te usar",
+                    Titulo = "Deixa Eu Te Usar",
                     Artista = "Midian Lima",
-                    Tempo = 90,
+                    Tempo = 160,
+                    Tom = "G",
                     Secoes = new List<Secao>
                     {
                         new Secao
                         {
-                            Titulo = "Intro",
+                            Titulo = "Introdução",
                             Acordes = new List<Acorde>
                             {
                             new Acorde {
-                                    Nota = "C",
-                                    Baixo = "",
-                                    Complemento = "7M",
-                                    Tempo = 8
-                                },
-                                new Acorde {
                                     Nota = "G",
                                     Baixo = "",
-                                    Complemento = "9",
-                                    Tempo = 8
+                                    Complemento = "7M",
+                                    Tempo = 4
                                 },
                                 new Acorde {
-                                    Nota = "Am",
-                                    Baixo = "C",
+                                    Nota = "E",
+                                    Baixo = "",
+                                    Complemento = "m(7)9",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "C",
                                     Complemento = "7M",
-                                    Tempo = 8
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "A",
+                                    Complemento = "m7/9",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "D",
+                                    Complemento = "4",
+                                    Tempo = 2
+                            },
+                             new Acorde {
+                                    Nota = "D",
+                                    Complemento = "4",
+                                    Tempo = 2
+                            },
                             }
+                        },
+                        new Secao
+                        {
+                            Titulo = "Estrofe",
+                            Acordes = new List<Acorde>
+                            {
+                            new Acorde {
+                                    Nota = "G",
+                                    Baixo = "",
+                                    Complemento = "7M",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "E",
+                                    Baixo = "",
+                                    Complemento = "m(7)9",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "C",
+                                    Complemento = "7M",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "A",
+                                    Complemento = "m7/9",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "D",
+                                    Complemento = "4",
+                                    Tempo = 2
+                            },
+                             new Acorde {
+                                    Nota = "D",
+                                    Tempo = 2
+                            },
                             }
-                        }
+                        },
+                        new Secao
+                        {
+                            Titulo = "Refrão",
+                            Acordes = new List<Acorde>
+                            {
+                            new Acorde {
+                                    Nota = "G",
+                                    Baixo = "",
+                                    Complemento = "7M",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "E",
+                                    Baixo = "",
+                                    Complemento = "m(7)9",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "C",
+                                    Complemento = "7M",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "G",
+                                    Baixo = "B",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "A",
+                                    Complemento = "m7/9",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "D",
+                                    Complemento = "4",
+                                    Tempo = 2
+                            },
+                             new Acorde {
+                                    Nota = "D",
+                                    Baixo = "C",
+                                    Complemento = "7",
+                                    Tempo = 2
+                            },
+
+                            }
+                        },
+                        new Secao
+                        {
+                            Titulo = "Solo",
+                            Acordes = new List<Acorde>
+                            {
+                            new Acorde {
+                                    Nota = "G",
+                                    Baixo = "",
+                                    Complemento = "7M",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "E",
+                                    Baixo = "",
+                                    Complemento = "m(7)9",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "C",
+                                    Complemento = "7M",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "A",
+                                    Complemento = "m7/9",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "D",
+                                    Complemento = "4",
+                                    Tempo = 2
+                            },
+                             new Acorde {
+                                    Nota = "D",
+                                    Tempo = 2
+                            },
+                            }
+                        },
+                         new Secao
+                        {
+                            Titulo = "Ponte",
+                            Acordes = new List<Acorde>
+                            {
+                                new Acorde {
+                                        Nota = "F#",
+                                        Complemento = "m",
+                                        Tempo = 2
+                                    },
+                                    new Acorde {
+                                        Nota = "D",
+                                        Tempo = 2
+                                    },
+                                    new Acorde {
+                                        Nota = "A",
+                                        Baixo = "C#",
+                                        Tempo = 2
+                                },
+                                new Acorde {
+                                        Nota = "E",
+                                        Baixo = "G#",
+                                        Tempo = 2
+                                },
+                                new Acorde {
+                                        Nota = "F#",
+                                        Complemento = "m",
+                                        Tempo = 2
+                                    },
+                                    new Acorde {
+                                        Nota = "D",
+                                        Tempo = 2
+                                    },
+                                    new Acorde {
+                                        Nota = "A",
+                                        Baixo = "C#",
+                                        Tempo = 2
+                                },
+                                new Acorde {
+                                        Nota = "E",
+                                        Baixo = "",
+                                        Complemento = "7",
+                                        Tempo = 2
+                                }
+                            }
+                        },
+                        new Secao
+                        {
+                            Titulo = "Refrão (Tom Novo)",
+                            Acordes = new List<Acorde>
+                            {
+                            new Acorde {
+                                    Nota = "A",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "F#",
+                                    Complemento = "m7/9",
+                                    Tempo = 4
+                                },
+                                new Acorde {
+                                    Nota = "D",
+                                    Complemento = "7M",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "B",
+                                    Complemento = "m7/9",
+                                    Tempo = 2
+                            },
+                            new Acorde {
+                                    Nota = "E",
+                                    Complemento = "4",
+                                    Tempo = 2
+                            },
+                             new Acorde {
+                                    Nota = "E",
+                                    Tempo = 2
+                            },
+                            }
+                        },
                     },
-                    Tom = "C"
                 },
                 new Musica
                 {
@@ -59,24 +276,24 @@ namespace Cifralite.Web.Core.Services
                             Titulo = "Intro",
                             Acordes = new List<Acorde>
                             {
-                            new Acorde {
-                                    Nota = "C",
-                                    Baixo = "",
-                                    Complemento = "7M",
-                                    Tempo = 8
-                                },
                                 new Acorde {
-                                    Nota = "G",
-                                    Baixo = "",
-                                    Complemento = "9",
-                                    Tempo = 8
-                                },
-                                new Acorde {
-                                    Nota = "Am",
-                                    Baixo = "C",
-                                    Complemento = "7M",
-                                    Tempo = 8
-                            }
+                                        Nota = "C",
+                                        Baixo = "",
+                                        Complemento = "7M",
+                                        Tempo = 4
+                                    },
+                                    new Acorde {
+                                        Nota = "G",
+                                        Baixo = "",
+                                        Complemento = "9",
+                                        Tempo = 4
+                                    },
+                                    new Acorde {
+                                        Nota = "Am",
+                                        Baixo = "C",
+                                        Complemento = "7M",
+                                        Tempo = 4
+                                }
                             }
                         }
                     },
@@ -99,19 +316,19 @@ namespace Cifralite.Web.Core.Services
                                     Nota = "E",
                                     Baixo = "",
                                     Complemento = "7M",
-                                    Tempo = 8
+                                    Tempo = 4
                                 },
                                 new Acorde {
                                     Nota = "B",
                                     Baixo = "",
                                     Complemento = "9",
-                                    Tempo = 8
+                                    Tempo = 4
                                 },
                                 new Acorde {
                                     Nota = "F",
                                     Baixo = "C",
                                     Complemento = "7M",
-                                    Tempo = 8
+                                    Tempo = 4
                             }
                             }
                         },
@@ -124,13 +341,13 @@ namespace Cifralite.Web.Core.Services
                                     Nota = "E",
                                     Baixo = "",
                                     Complemento = "7M",
-                                    Tempo = 8
+                                    Tempo = 4
                                 },
                                 new Acorde {
                                     Nota = "B",
                                     Baixo = "",
                                     Complemento = "9",
-                                    Tempo = 8
+                                    Tempo = 4
                                 },
                                 new Acorde {
                                     Nota = "E",
@@ -148,7 +365,7 @@ namespace Cifralite.Web.Core.Services
                                     Nota = "F",
                                     Baixo = "C",
                                     Complemento = "7M",
-                                    Tempo = 8
+                                    Tempo = 4
                             }
                             }
                         }
