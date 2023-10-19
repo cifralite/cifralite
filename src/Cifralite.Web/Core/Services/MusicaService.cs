@@ -20,6 +20,12 @@ namespace Cifralite.Web.Core.Services
                 Artista = "Desconhecido"
             };
 
+            musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            BancoDeDadosFake.Add(musica);
+            return musica.Id;
+        }
+
+        public List<Secao> FormatarMusicaParaObjetos(string musicaEmTexto) {
             var secoes = new List<Secao>();
 
             var linhas = musicaEmTexto.Split('\n');
@@ -71,14 +77,16 @@ namespace Cifralite.Web.Core.Services
                     }
                 }
             }
-
-            musica.Secoes = secoes;
-            BancoDeDadosFake.Add(musica);
-            return musica.Id;
+            return secoes;
         }
 
         public void RemoverMusica(int id) {
             BancoDeDadosFake.Remove(id);
+        }
+
+        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto) {
+            musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            BancoDeDadosFake.Update(musicaEditada);
         } 
     }
 }

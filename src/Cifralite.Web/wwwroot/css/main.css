@@ -158,7 +158,6 @@ nav button {
     margin-left: 3%;
     margin-right: 3%;
 }
-/* fim navBar */
 
 /* inicio exibir música */
 .blocoMusica {
@@ -171,7 +170,7 @@ nav button {
     overflow: auto;
 }
 
-#infoMusicas {
+#infoMusicas{
     color: white;
     display: flex;
     font-size: 20pt;

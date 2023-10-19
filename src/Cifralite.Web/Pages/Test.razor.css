@@ -1,0 +1,134 @@
+/* inicio exibir música */
+
+.blocoMusica {
+    background-color: #006494;
+    text-align: center;
+    box-shadow: 3px 3px black;
+    border-radius: 10px;
+    margin: 7px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    overflow: auto;
+}
+
+#infoMusicas {
+    color: white;
+    display: flex;
+    font-size: 20pt;
+    font-weight: bold;
+    width: 80%;
+    margin-top: 15px;
+}
+
+
+#nomeMusica {
+    width: 30%;
+    height: 103px;
+    line-height: 103px;
+    white-space: nowrap;
+}
+
+.tomMusica {
+    display: flex;
+    min-width: 25%;
+}
+
+#tom {
+    width: 60%;
+    height: 103px;
+    line-height: 103px;
+}
+
+.responsivoAumentarDiminuir {
+    min-width: 30%;
+}
+
+#aumentarTom,
+#diminuirTom {
+    width: 80%;
+    height: 48px;
+    line-height: 48px;
+}
+
+#blocoLixeira {
+    width: 20%;
+    height: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iconLixeira {
+    min-width: 34%;
+    max-height: 80%;
+    margin: 7px;
+}
+
+#blocoEditarMusica {
+    width: 20%;
+    height: 103px;
+    display: flex;
+    justify-content: center;
+}
+
+#iconEditarMusica {
+    min-width: 60%;
+    max-width: 70%;
+    margin: 7px;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#container {
+    border-radius: 10px;
+    margin-top: 1%;
+    font-size: 27pt;
+    width: 78.6%;
+    overflow: auto;
+    display: flex;
+    text-align: center;
+}
+
+.secoes {
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 1%;
+    font-size: 27pt;
+    width: 78.5%;
+    overflow: auto;
+    display: flex;
+    text-align: center;
+}
+
+.secoes section {
+    width: 100%;
+    padding: 0px 4% 0px 4%;
+}
+
+.secoes #TituloSecao {
+    font-size: 23px;
+    margin-top: 15px;
+    color: var(--cor-semi-escura);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
+
+.secoes .Acordes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tempo {
+    font-size: 30px;
+    color: var(--cor-semi-escura);
+    font-weight: bold;
+    text-align: start;
+}
+
+/* fim exibir música */
