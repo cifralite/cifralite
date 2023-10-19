@@ -1,4 +1,5 @@
 @page "/musicas/{id:int}"
+@inject NavigationManager NavigationManager
 @inject MusicaService MusicaService
 
 <NavBar />
@@ -7,10 +8,10 @@
 
     <section id="infoMusicas">
         <div id="nomeMusica" class="blocoMusica">
-            <span id="titulo">@musicas[id - 1].Titulo</span>
+            <span id="titulo">@Musica.Titulo</span>
         </div>
         <div class="tomMusica">
-            <span id="tom" class="blocoMusica">@musicas[id - 1].Tom</span>
+            <span id="tom" class="blocoMusica">@Musica.Tom</span>
             <div class="responsivoAumentarDiminuir">
                 <button id="aumentarTom" class="blocoMusica" @onclick="SubirMeioTom">+</button>
                 <button id="diminuirTom" class="blocoMusica" @onclick="BaixarMeioTom">-</button>
@@ -19,14 +20,14 @@
         <div class="blocoMusica" id="blocoLixeira">
             @* <img src="fotos/iconLixeixa.png" alt="icone lixeira" id="iconLixeira"> *@
             <span>@(id)</span>
-            <ModalDeDeletarMusica IdMusica="@(id)"/>
+            <ModalDeDeletarMusica IdMusica="@(id)" />
         </div>
         <div class="blocoMusica" id="blocoEditarMusica">
-            <ModalAtualizarMusica Musica="@musicas[id-1]" />
+            <ModalAtualizarMusica Musica="@Musica" />
         </div>
     </section>
 
-    @foreach (var secao in musicas[id - 1].Secoes)
+    @foreach (var secao in Musica.Secoes)
     {
         <div class="secoes">
             <section>
@@ -56,11 +57,18 @@
 
     private List<Musica> musicas = new List<Musica>();
 
-    private Musica musica => musicas.First(x => x.Id == id);
+    private Musica Musica { get; set; } = new Musica();
 
     protected override void OnInitialized()
     {
-        musicas = MusicaService.ObterMusicas();
+        var musica = MusicaService.ObterMusicaPeloId(id);
+        if (musica is null)
+        {
+            NavigationManager.NavigateTo("/");
+            return;
+        }
+
+        Musica = musica;
     }
 
     private string ConstruirNotaEmTexto(Acorde acorde)
@@ -82,12 +90,12 @@
 
     private void SubirMeioTom()
     {
-        musica.SubirMeioTom();
+        Musica.SubirMeioTom();
     }
 
     private void BaixarMeioTom()
     {
-        musica.DescerMeioTom();
+        Musica.DescerMeioTom();
     }
 
     public List<List<Acorde>> AgruparAcordes(List<Acorde> acordes)

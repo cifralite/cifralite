@@ -10,6 +10,11 @@ namespace Cifralite.Web.Core.Services
             return BancoDeDadosFake.Musicas;
         }
 
+        public Musica? ObterMusicaPeloId(int id)
+        {
+            return BancoDeDadosFake.GetById(id);
+        }
+
         public int AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
         {
             var musica = new Musica
@@ -25,7 +30,8 @@ namespace Cifralite.Web.Core.Services
             return musica.Id;
         }
 
-        public List<Secao> FormatarMusicaParaObjetos(string musicaEmTexto) {
+        public List<Secao> FormatarMusicaParaObjetos(string musicaEmTexto)
+        {
             var secoes = new List<Secao>();
 
             var linhas = musicaEmTexto.Split('\n');
@@ -80,13 +86,15 @@ namespace Cifralite.Web.Core.Services
             return secoes;
         }
 
-        public void RemoverMusica(int id) {
+        public void RemoverMusica(int id)
+        {
             BancoDeDadosFake.Remove(id);
         }
 
-        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto) {
+        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
+        {
             musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
             BancoDeDadosFake.Update(musicaEditada);
-        } 
+        }
     }
 }
