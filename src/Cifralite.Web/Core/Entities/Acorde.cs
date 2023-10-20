@@ -10,7 +10,7 @@ public class Acorde
     public string Complemento { get; set; } = string.Empty;
     public int Tempo { get; set; }
 
-    internal static Acorde CriarAcordePeloTexto(string acordeEmTexto)
+    public static Acorde CriarAcordePeloTexto(string acordeEmTexto)
     {
         var acorde = new Acorde();
 
@@ -39,6 +39,20 @@ public class Acorde
         return acorde;
 
 
+    }
+    public static string TransformarAcordeEmTexto(Acorde acorde)
+    {
+        if (string.IsNullOrEmpty(acorde.Baixo))
+        {
+            return $"{acorde.Nota}{acorde.Complemento}|{acorde.Tempo}";
+        }
+
+        return $"{acorde.Nota}{acorde.Complemento}|{acorde.Baixo}|{acorde.Tempo}";
+    }
+
+    public static List<string> TransformarAcordesEmTexto(List<Acorde> acordes)
+    {
+        return acordes.Select(TransformarAcordeEmTexto).ToList();
     }
 
     public void DescerMeioTom()

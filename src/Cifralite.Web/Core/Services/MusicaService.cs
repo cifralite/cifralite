@@ -1,13 +1,22 @@
 using System.Text.RegularExpressions;
+using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Entities;
 
 namespace Cifralite.Web.Core.Services
 {
     public class MusicaService
     {
+        private readonly ContextoBD _contextoBD;
+
+        public MusicaService(ContextoBD contextoBD)
+        {
+            _contextoBD = contextoBD;
+        }
+
         public List<Musica> ObterMusicas()
         {
-            return BancoDeDadosFake.Musicas;
+            // return BancoDeDadosFake.Musicas;
+            return _contextoBD.Musicas.ToList();
         }
 
         public Musica? ObterMusicaPeloId(int id)
@@ -26,6 +35,9 @@ namespace Cifralite.Web.Core.Services
             };
 
             musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            _contextoBD.Musicas.Add(musica);
+            _contextoBD.SaveChanges();
+
             BancoDeDadosFake.Add(musica);
             return musica.Id;
         }
