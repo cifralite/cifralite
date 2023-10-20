@@ -1,10 +1,19 @@
+using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
 builder.Services.AddScoped<MusicaService>();
+
+
+builder.Services.AddDbContext<ContextoBD>(options =>
+{
+    options.UseSqlite("Data Source=../../banco.db");
+});
 
 var app = builder.Build();
 

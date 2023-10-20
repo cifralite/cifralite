@@ -1,13 +1,27 @@
 using System.Text.RegularExpressions;
+using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Entities;
 
 namespace Cifralite.Web.Core.Services
 {
     public class MusicaService
     {
+        private readonly ContextoBD _contextoBD;
+
+        public MusicaService(ContextoBD contextoBD)
+        {
+            _contextoBD = contextoBD;
+        }
+
         public List<Musica> ObterMusicas()
         {
-            return BancoDeDadosFake.Musicas;
+            // return BancoDeDadosFake.Musicas;
+            return _contextoBD.Musicas.ToList();
+        }
+
+        public Musica? ObterMusicaPeloId(int id)
+        {
+            return BancoDeDadosFake.GetById(id);
         }
 
         public int AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
@@ -21,11 +35,15 @@ namespace Cifralite.Web.Core.Services
             };
 
             musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            _contextoBD.Musicas.Add(musica);
+            _contextoBD.SaveChanges();
+
             BancoDeDadosFake.Add(musica);
             return musica.Id;
         }
 
-        public List<Secao> FormatarMusicaParaObjetos(string musicaEmTexto) {
+        public List<Secao> FormatarMusicaParaObjetos(string musicaEmTexto)
+        {
             var secoes = new List<Secao>();
 
             var linhas = musicaEmTexto.Split('\n');
@@ -80,13 +98,15 @@ namespace Cifralite.Web.Core.Services
             return secoes;
         }
 
-        public void RemoverMusica(int id) {
+        public void RemoverMusica(int id)
+        {
             BancoDeDadosFake.Remove(id);
         }
 
-        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto) {
+        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
+        {
             musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
             BancoDeDadosFake.Update(musicaEditada);
-        } 
+        }
     }
 }
