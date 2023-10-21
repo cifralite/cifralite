@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cifralite.Web.Core.Services
 {
@@ -21,7 +22,7 @@ namespace Cifralite.Web.Core.Services
 
         public Musica? ObterMusicaPeloId(int id)
         {
-            var musica = _contextoBD.Musicas.FirstOrDefault(x => x.Id == id);
+            var musica = _contextoBD.Musicas.Include(x => x.Secoes).FirstOrDefault(x => x.Id == id);
             return musica;
             // return BancoDeDadosFake.GetById(id);
         }
@@ -36,7 +37,10 @@ namespace Cifralite.Web.Core.Services
                 Artista = "Desconhecido"
             };
 
-            musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            // musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            foreach (var secao in FormatarMusicaParaObjetos(musicaEmTexto)) {
+                musica.Secoes.Add(secao);
+            }
             _contextoBD.Musicas.Add(musica);
             _contextoBD.SaveChanges();
 
@@ -110,9 +114,12 @@ namespace Cifralite.Web.Core.Services
 
         public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
         {
+            var musicaAntiga = ObterMusicaPeloId(musicaEditada.Id);
+            foreach (var secao in FormatarMusicaParaObjetos(musicaEmTexto)) {
+                // musicaEditada.Secoes.Update(secao);
+            }
             _contextoBD.Musicas.Update(musicaEditada);
             _contextoBD.SaveChanges();
-            // musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
             // BancoDeDadosFake.Update(musicaEditada);
         }
     }
