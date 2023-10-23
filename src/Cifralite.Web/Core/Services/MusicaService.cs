@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cifralite.Web.Core.Services
 {
@@ -16,12 +17,14 @@ namespace Cifralite.Web.Core.Services
         public List<Musica> ObterMusicas()
         {
             // return BancoDeDadosFake.Musicas;
-            return _contextoBD.Musicas.ToList();
+            return _contextoBD.Musicas.AsNoTracking().ToList();
         }
 
         public Musica? ObterMusicaPeloId(int id)
         {
-            return BancoDeDadosFake.GetById(id);
+            var musica = _contextoBD.Musicas.Include(x => x.Secoes).FirstOrDefault(x => x.Id == id);
+            return musica;
+            // return BancoDeDadosFake.GetById(id);
         }
 
         public int AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
@@ -34,11 +37,13 @@ namespace Cifralite.Web.Core.Services
                 Artista = "Desconhecido"
             };
 
-            musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
+            foreach (var secao in FormatarMusicaParaObjetos(musicaEmTexto)) {
+                musica.Secoes.Add(secao);
+            }
             _contextoBD.Musicas.Add(musica);
             _contextoBD.SaveChanges();
 
-            BancoDeDadosFake.Add(musica);
+            // BancoDeDadosFake.Add(musica);
             return musica.Id;
         }
 
@@ -100,13 +105,18 @@ namespace Cifralite.Web.Core.Services
 
         public void RemoverMusica(int id)
         {
-            BancoDeDadosFake.Remove(id);
+            var musica = _contextoBD.Musicas.FirstOrDefault(x => x.Id == id);
+            _contextoBD.Musicas.Remove(musica);
+            _contextoBD.SaveChanges();
+            // BancoDeDadosFake.Remove(id);
         }
 
         public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
         {
             musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
-            BancoDeDadosFake.Update(musicaEditada);
+            _contextoBD.Musicas.Update(musicaEditada);
+            _contextoBD.SaveChanges();
+            // BancoDeDadosFake.Update(musicaEditada);
         }
     }
 }
