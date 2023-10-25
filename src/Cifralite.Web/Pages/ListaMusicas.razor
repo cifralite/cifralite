@@ -29,9 +29,9 @@
 
     private List<Musica> _musicas = new List<Musica>();
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
-        _musicas = MusicaService.ObterMusicas();
+        _musicas = await MusicaService.ObterMusicas();
     }
 
     private void IrParaMusica(int id)
