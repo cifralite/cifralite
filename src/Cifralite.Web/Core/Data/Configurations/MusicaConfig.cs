@@ -29,5 +29,9 @@ public class MusicaConfig : IEntityTypeConfiguration<Musica>
             .WithOne(x => x.Musica)
             .HasForeignKey(x => x.IdMusica)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(x => x.Usuario)
+            .WithMany(x => x.Musicas)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

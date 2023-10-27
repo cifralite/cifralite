@@ -6,6 +6,7 @@ namespace Cifralite.Web.Core.Data;
 public class ContextoBD : DbContext
 {
     public DbSet<Musica> Musicas { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Secao> Secoes { get; set; }
 
     public ContextoBD(DbContextOptions<ContextoBD> options) : base(options) { }

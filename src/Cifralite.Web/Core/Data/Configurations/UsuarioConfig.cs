@@ -28,7 +28,6 @@ namespace Cifralite.Web.Core.Data.Configurations {
 
             builder.HasMany(x => x.Musicas)
                 .WithOne(x => x.Usuario)
-                .HasConstraintName("FK_Usuario_Musica")
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasIndex(x => x.Email, "IX_Usuario_Email")
