@@ -14,20 +14,21 @@ namespace Cifralite.Web.Core.Services
             _contextoBD = contextoBD;
         }
 
-        public List<Musica> ObterMusicas()
+        public async Task<List<Musica>> ObterMusicas()
         {
             // return BancoDeDadosFake.Musicas;
-            return _contextoBD.Musicas.AsNoTracking().ToList();
+            var musicas = await _contextoBD.Musicas.AsNoTracking().ToListAsync();
+            return musicas;
         }
 
-        public Musica? ObterMusicaPeloId(int id)
+        public async Task<Musica?> ObterMusicaPeloId(int id)
         {
-            var musica = _contextoBD.Musicas.Include(x => x.Secoes).FirstOrDefault(x => x.Id == id);
+            var musica = await _contextoBD.Musicas.Include(x => x.Secoes).FirstOrDefaultAsync(x => x.Id == id);
             return musica;
             // return BancoDeDadosFake.GetById(id);
         }
 
-        public int AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
+        public async Task<int> AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
         {
             var musica = new Musica
             {
@@ -40,8 +41,8 @@ namespace Cifralite.Web.Core.Services
             foreach (var secao in FormatarMusicaParaObjetos(musicaEmTexto)) {
                 musica.Secoes.Add(secao);
             }
-            _contextoBD.Musicas.Add(musica);
-            _contextoBD.SaveChanges();
+            await _contextoBD.Musicas.AddAsync(musica);
+            await _contextoBD.SaveChangesAsync();
 
             // BancoDeDadosFake.Add(musica);
             return musica.Id;
@@ -103,19 +104,19 @@ namespace Cifralite.Web.Core.Services
             return secoes;
         }
 
-        public void RemoverMusica(int id)
+        public async Task RemoverMusica(int id)
         {
-            var musica = _contextoBD.Musicas.FirstOrDefault(x => x.Id == id);
+            var musica = await _contextoBD.Musicas.FirstOrDefaultAsync(x => x.Id == id);
             _contextoBD.Musicas.Remove(musica);
-            _contextoBD.SaveChanges();
+            await _contextoBD.SaveChangesAsync();
             // BancoDeDadosFake.Remove(id);
         }
 
-        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
+        public async Task AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
         {
             musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
             _contextoBD.Musicas.Update(musicaEditada);
-            _contextoBD.SaveChanges();
+            await _contextoBD.SaveChangesAsync();
             // BancoDeDadosFake.Update(musicaEditada);
         }
     }
