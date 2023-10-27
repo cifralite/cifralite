@@ -29,7 +29,7 @@
 
     private List<Musica> _musicas = new List<Musica>();
 
-    protected override async void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         _musicas = await MusicaService.ObterMusicas();
     }

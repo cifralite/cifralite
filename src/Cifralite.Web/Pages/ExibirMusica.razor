@@ -59,7 +59,7 @@
 
     private Musica Musica { get; set; } = new Musica();
 
-    protected override async void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         var musica = await MusicaService.ObterMusicaPeloId(id);
         if (musica is null)

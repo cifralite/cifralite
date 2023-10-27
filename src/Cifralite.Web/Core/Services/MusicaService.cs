@@ -104,7 +104,7 @@ namespace Cifralite.Web.Core.Services
             return secoes;
         }
 
-        public async void RemoverMusica(int id)
+        public async Task RemoverMusica(int id)
         {
             var musica = await _contextoBD.Musicas.FirstOrDefaultAsync(x => x.Id == id);
             _contextoBD.Musicas.Remove(musica);
@@ -112,7 +112,7 @@ namespace Cifralite.Web.Core.Services
             // BancoDeDadosFake.Remove(id);
         }
 
-        public async void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
+        public async Task AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
         {
             musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
             _contextoBD.Musicas.Update(musicaEditada);
