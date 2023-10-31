@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#TelaDeCadastro {
+    background-color: white;
+    margin: auto;
+    min-width: 10rem;
+    max-width: 30rem;
+}
+
+#Formulario {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+    margin: auto;
+}
+
+#Formulario input, button{
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#BotaoCadastrar {
+    max-width: 35%;
+    margin: 0 auto 1rem auto;
+}
+
+#Formulario a {
+    color: var(--cor-semi-escura);
+    margin: auto;
+    margin-bottom: 0.5rem;
+    padding: 0rem;
+}
