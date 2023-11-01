@@ -23,7 +23,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDbContext<IDbContext, AppDbContextSqlite>();
 }
 
-if (builder.Environment.IsProduction())
+if (builder.Environment.IsStaging())
 {
     builder.Services.AddDbContext<IDbContext, AppDbContext>(options =>
     {
