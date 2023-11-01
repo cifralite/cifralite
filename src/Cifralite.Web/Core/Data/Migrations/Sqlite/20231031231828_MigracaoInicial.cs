@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Cifralite.Web.Core.Data.Migrations
+namespace Cifralite.Web.Core.Data.Migrations.Sqlite
 {
     /// <inheritdoc />
     public partial class MigracaoInicial : Migration
@@ -33,7 +33,7 @@ namespace Cifralite.Web.Core.Data.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Titulo = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Acordes = table.Column<string>(type: "text", nullable: false),
+                    Acordes = table.Column<string>(type: "TEXT", nullable: false),
                     IdMusica = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
