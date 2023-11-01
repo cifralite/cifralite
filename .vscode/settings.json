@@ -8,9 +8,9 @@
         "**/Thumbs.db": true,
         "**/bin": true,
         "**/obj": true,
-        "**/.vscode": true,
-        "**/Properties": true,
-        "src\\Cifralite.Web/Properties": true
+        "**/.vscode": false,
+        "**/Properties": false,
+        "src\\Cifralite.Web/Properties": false
     },
     "explorerExclude.backup": {},
     "dotnet.defaultSolution": "Cifralite.sln",
