@@ -16,7 +16,7 @@ namespace Cifralite.Web.Core.Services {
             return usuarios;
         }
 
-        public async Task<Usuario?> ObterUsusario(int id) {
+        public async Task<Usuario?> ObterUsuario(int id) {
             var usuario = await _contextoBD.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
             return usuario;
         }
