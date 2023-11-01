@@ -26,7 +26,13 @@ namespace Cifralite.Web.Core.Services {
             return usuario;
         }
 
-        public async Task AdicionarUsuario(Usuario usuario) {
+        public async Task AdicionarUsuario(string nome, string email, string senha) {
+            var usuario = new Usuario() {
+                Nome = nome,
+                Email = email,
+                Senha = senha
+            };
+
             await _contextoBD.Usuarios.AddAsync(usuario);
             await _contextoBD.SaveChangesAsync();
         }

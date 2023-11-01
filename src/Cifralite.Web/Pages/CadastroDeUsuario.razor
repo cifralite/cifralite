@@ -1,15 +1,31 @@
 @page "/cadastrar_se/"
+@inject UsuarioService UsuarioService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Cadastra-se no Cifralite</PageTitle>
 
 <div id="TelaDeCadastro">
-    <p>Cadastre-se no Cifralite</p>
+    <h1>Cadastre-se</h1>
+    <p>Crie agora sua conta no <strong>Cifralite</strong></p>
 
     <div id="Formulario">
-        <input type="text" placeholder="Nome">
-        <input type="email" placeholder="E-mail">
-        <input type="password" placeholder="Senha">
+        <input @bind="Nome" type="text" placeholder="Nome" required>
+        <input @bind="Email" type="email" placeholder="E-mail" required>
+        <input @bind="Senha" type="password" placeholder="Senha" required>
 
-        <button id="BotaoCadastrar">Cadastrar-se</button>
+        <button id="BotaoCadastrar" @onclick="AdicionarUsuario">Criar conta</button>
         <a href="#">Esqueci minha senha</a>
         <a href="#">Já tenho uma conta</a>
     </div>
 </div>
+
+@code {
+    public string Nome {get; set;} = string.Empty;
+    public string Email {get; set;} = string.Empty;
+    public string Senha {get; set;} = string.Empty;
+
+    public async Task AdicionarUsuario() {
+        await UsuarioService.AdicionarUsuario(Nome, Email, Senha);
+        NavigationManager.NavigateTo("/");
+    }
+}

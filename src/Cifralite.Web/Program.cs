@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
 builder.Services.AddScoped<MusicaService>();
+builder.Services.AddScoped<UsuarioService>();
 
 
 builder.Services.AddDbContext<ContextoBD>(options =>
