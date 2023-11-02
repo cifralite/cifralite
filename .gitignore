@@ -475,3 +475,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+**/banco.db-shm
+**/banco.db-wal

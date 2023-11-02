@@ -10,6 +10,7 @@ public class Musica
     public string Artista { get; set; } = string.Empty;
     public int Tempo { get; set; }
     public string? Tom { get; internal set; }
+    public Usuario Usuario { get; set; } = new();
 
     public List<Secao> Secoes { get; set; } = new();
 

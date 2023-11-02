@@ -46,7 +46,12 @@ namespace Cifralite.Web.Core.Data.Migrations.SqlServer
                         .HasMaxLength(2)
                         .HasColumnType("nvarchar(2)");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Musicas", (string)null);
                 });
@@ -78,6 +83,48 @@ namespace Cifralite.Web.Core.Data.Migrations.SqlServer
                     b.ToTable("Secoes", (string)null);
                 });
 
+            modelBuilder.Entity("Cifralite.Web.Core.Entities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Email" }, "IX_Usuario_Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios", (string)null);
+                });
+
+            modelBuilder.Entity("Cifralite.Web.Core.Entities.Musica", b =>
+                {
+                    b.HasOne("Cifralite.Web.Core.Entities.Usuario", "Usuario")
+                        .WithMany("Musicas")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("Cifralite.Web.Core.Entities.Secao", b =>
                 {
                     b.HasOne("Cifralite.Web.Core.Entities.Musica", "Musica")
@@ -92,6 +139,11 @@ namespace Cifralite.Web.Core.Data.Migrations.SqlServer
             modelBuilder.Entity("Cifralite.Web.Core.Entities.Musica", b =>
                 {
                     b.Navigation("Secoes");
+                });
+
+            modelBuilder.Entity("Cifralite.Web.Core.Entities.Usuario", b =>
+                {
+                    b.Navigation("Musicas");
                 });
 #pragma warning restore 612, 618
         }

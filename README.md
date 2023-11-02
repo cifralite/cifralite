@@ -100,6 +100,15 @@ Apesar do Sqlite ser o banco de dados padrão para desenvolvimento, você pode u
 
 Agora, você pode executar o servidor no ambiente de **Staging** para usar o Sql Server como banco de dados.
 
+### Migrações
+
+Para criar migrações, siga os passos abaixo:
+
+- Abra o terminal.
+- Navegue até o diretório do projeto `src/Cifralite.Web`.
+- Execute o comando `dotnet ef migrations add {nome-da-migracao} --context AppDbContextSqlite -o .\Core\Data\Migrations\Sqlite\` para criar uma nova migração do Sqlite.
+- Execute o comando para mudar o ambiente no PowerShell `$env:ASPNETCORE_ENVIRONMENT="Staging"`
+- Execute o comando `dotnet ef migrations add {nome-da-migracao} --context AppDbContext -o .\Core\Data\Migrations\SqlServer\` para criar uma nova migração do SQL Server.
 
 ## Fluxo de Desenvolvimento
 
