@@ -1,4 +1,4 @@
-@page "/cadastrar_se/"
+@page "/cadastro/"
 @inject UsuarioService UsuarioService
 @inject NavigationManager NavigationManager
 
@@ -20,11 +20,11 @@
 </div>
 
 @code {
-    public string Nome {get; set;} = string.Empty;
-    public string Email {get; set;} = string.Empty;
-    public string Senha {get; set;} = string.Empty;
+    private string Nome {get; set;} = string.Empty;
+    private string Email {get; set;} = string.Empty;
+    private string Senha {get; set;} = string.Empty;
 
-    public async Task AdicionarUsuario() {
+    private async Task AdicionarUsuario() {
         if (Nome != "" && Email != "" && Senha != "") {
             await UsuarioService.AdicionarUsuario(Nome, Email, Senha);
             NavigationManager.NavigateTo("/");

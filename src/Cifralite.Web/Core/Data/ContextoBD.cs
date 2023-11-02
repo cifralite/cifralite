@@ -15,10 +15,13 @@ public interface IDbContext
 
 public class AppDbContextSqlite : DbContext, IDbContext
 {
-    public AppDbContextSqlite(DbContextOptions<AppDbContextSqlite> options) : base(options) { }
+    public AppDbContextSqlite(DbContextOptions<AppDbContextSqlite> options) : base(options)
+    {
+    }
 
-    public DbSet<Musica> Musicas { get; set; }
-    public DbSet<Secao> Secoes { get; set; }
+    public DbSet<Musica> Musicas { get; set; } = null!;
+    public DbSet<Secao> Secoes { get; set; } = null!;
+    public DbSet<Usuario> Usuarios { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -33,10 +36,13 @@ public class AppDbContextSqlite : DbContext, IDbContext
 
 public class AppDbContext : DbContext, IDbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
 
-    public DbSet<Musica> Musicas { get; set; }
-    public DbSet<Secao> Secoes { get; set; }
+    public DbSet<Musica> Musicas { get; set; } = null!;
+    public DbSet<Secao> Secoes { get; set; } = null!;
+    public DbSet<Usuario> Usuarios { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

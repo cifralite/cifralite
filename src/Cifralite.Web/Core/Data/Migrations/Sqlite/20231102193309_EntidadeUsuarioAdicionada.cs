@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Cifralite.Web.Core.Data.Migrations
+namespace Cifralite.Web.Core.Data.Migrations.Sqlite
 {
     /// <inheritdoc />
     public partial class EntidadeUsuarioAdicionada : Migration
@@ -10,13 +10,6 @@ namespace Cifralite.Web.Core.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "UsuarioId",
-                table: "Musicas",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
-
             migrationBuilder.CreateTable(
                 name: "Usuarios",
                 columns: table => new
@@ -31,11 +24,6 @@ namespace Cifralite.Web.Core.Data.Migrations
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Musicas_UsuarioId",
-                table: "Musicas",
-                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Usuario_Email",
@@ -61,14 +49,6 @@ namespace Cifralite.Web.Core.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Musicas_UsuarioId",
-                table: "Musicas");
-
-            migrationBuilder.DropColumn(
-                name: "UsuarioId",
-                table: "Musicas");
         }
     }
 }
