@@ -25,11 +25,9 @@
     public string Senha {get; set;} = string.Empty;
 
     public async Task AdicionarUsuario() {
-        if (Nome == "" || Email == "" || Senha == "") {
-            Console.WriteLine("Por favor preencha as informações necessárias");
-        } else {
-            await UsuarioService.AdicionarUsuario(Nome, Email, Senha); 
-        }
-        NavigationManager.NavigateTo("/");
+        if (Nome != "" && Email != "" && Senha != "") {
+            await UsuarioService.AdicionarUsuario(Nome, Email, Senha);
+            NavigationManager.NavigateTo("/");
+        } 
     }
 }
