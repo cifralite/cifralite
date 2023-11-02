@@ -8,51 +8,52 @@
 @if (_mostrarModalAdicionarMusica)
 {
 
-        <div class="modal-overlay open"></div>
+    <div class="modal-overlay open"></div>
 
-        <div id="adicionar-musica-modal" class="modal open">
-            <h1>Editar Música</h1>
+    <div id="adicionar-musica-modal" class="modal open">
+        <h1>Editar Música</h1>
 
-            <h3 class="helper-modal">Informações</h3>
-            <div class="adicionar-musica-info">
-                <input @bind="Musica.Titulo" type="text" id="campo-titulo" class="input-texto" name="campo-titulo"
-                    placeholder="Título">
-                <select @bind="Musica.Tom" id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
-                    <option disabled value="" selected>Tom</option>
-                    <option value="C">C</option>
-                    <option value="C#">C#</option>
-                    <option value="D">D</option>
-                    <option value="D#">D#</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                    <option value="F#">F#</option>
-                    <option value="G">G</option>
-                    <option value="G#">G#</option>
-                    <option value="A">A</option>
-                    <option value="A#">A#</option>
-                    <option value="B">B</option>
-                </select>
-                <input @bind="Musica.Tempo" type="text" id="campo-tempo" class="input-texto" name="campo-tempo" placeholder="Tempo">
-            </div>
-
-            <h3 class="helper-modal">Acordes</h3>
-            <div class="musica-texto">
-                <textarea @bind="Conteudo" name="" id="conteudo-musica-texto" cols="30" rows="10"></textarea>
-            </div>
-
-            <br>
-            <br>
-            <button id="botao-enviar" @onclick="AtualizarMusica">Editar</button>
-            <button id="botao-fechar" @onclick="FecharModalAtualizarMusica">Fechar</button>
+        <h3 class="helper-modal">Informações</h3>
+        <div class="adicionar-musica-info">
+            <input @bind="Musica.Titulo" type="text" id="campo-titulo" class="input-texto" name="campo-titulo"
+                placeholder="Título">
+            <select @bind="Musica.Tom" id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
+                <option disabled value="" selected>Tom</option>
+                <option value="C">C</option>
+                <option value="C#">C#</option>
+                <option value="D">D</option>
+                <option value="D#">D#</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#</option>
+                <option value="G">G</option>
+                <option value="G#">G#</option>
+                <option value="A">A</option>
+                <option value="A#">A#</option>
+                <option value="B">B</option>
+            </select>
+            <input @bind="Musica.Tempo" type="text" id="campo-tempo" class="input-texto" name="campo-tempo"
+                placeholder="Tempo">
         </div>
+
+        <h3 class="helper-modal">Acordes</h3>
+        <div class="musica-texto">
+            <textarea @bind="Conteudo" name="" id="conteudo-musica-texto" cols="30" rows="10"></textarea>
+        </div>
+
+        <br>
+        <br>
+        <button id="botao-enviar" @onclick="AtualizarMusica">Editar</button>
+        <button id="botao-fechar" @onclick="FecharModalAtualizarMusica">Fechar</button>
+    </div>
 
 }
 
 @code {
     [Parameter]
-    public Musica Musica {get; set;} = new();
+    public Musica Musica { get; set; } = new();
     private bool _mostrarModalAdicionarMusica = false;
-    
+
     //VariaveisDoModal
     public string Conteudo { get; set; } = "";
 
@@ -68,24 +69,30 @@
         _mostrarModalAdicionarMusica = false;
     }
 
-     private void PrepararModalAtualizarMusica()
+    private void PrepararModalAtualizarMusica()
     {
         MostrarModalAtualizarMusica();
         FormatarMusicaParaTexto();
     }
 
-    private void FormatarMusicaParaTexto(){
+    private void FormatarMusicaParaTexto()
+    {
         //Limpar Conteúdo
         Conteudo = "";
 
-        foreach (var secao in Musica.Secoes) {
+        foreach (var secao in Musica.Secoes)
+        {
             Conteudo += $"[{secao.Titulo}]";
             Conteudo += "\n\n";
 
-            foreach (var acorde in secao.Acordes) {    
-                if (acorde.Baixo == "") {
+            foreach (var acorde in secao.Acordes)
+            {
+                if (acorde.Baixo == "")
+                {
                     Conteudo += $"{acorde.Nota}{acorde.Complemento}|{acorde.Tempo} ";
-                } else {
+                }
+                else
+                {
                     Conteudo += $"{acorde.Nota}{acorde.Complemento}|{acorde.Baixo}|{acorde.Tempo} ";
                 }
             }
@@ -96,10 +103,10 @@
         }
     }
 
-    private void AtualizarMusica() 
+    private async Task AtualizarMusica()
     {
-        MusicaService.AtualizarMusica(Musica, Conteudo);
+        await MusicaService.AtualizarMusica(Musica, Conteudo);
         FecharModalAtualizarMusica();
-        NavigationManager.NavigateTo($"/musicas/{Musica.Id}" , true);
+        NavigationManager.NavigateTo($"/musicas/{Musica.Id}", true);
     }
 }

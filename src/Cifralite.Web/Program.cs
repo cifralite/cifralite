@@ -11,10 +11,26 @@ builder.Services.AddScoped<MusicaService>();
 builder.Services.AddScoped<UsuarioService>();
 
 
-builder.Services.AddDbContext<ContextoBD>(options =>
+if (builder.Environment.IsEnvironment("Testing"))
 {
-    options.UseSqlite("Data Source=../../banco.db");
-});
+    builder.Services.AddDbContext<IDbContext, AppDbContext>(options =>
+    {
+        options.UseInMemoryDatabase("Cifralite");
+    });
+}
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<IDbContext, AppDbContextSqlite>();
+}
+
+if (builder.Environment.IsStaging())
+{
+    builder.Services.AddDbContext<IDbContext, AppDbContext>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+    });
+}
 
 var app = builder.Build();
 

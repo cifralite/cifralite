@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Cifralite.Web.Core.Data.Migrations
+namespace Cifralite.Web.Core.Data.Migrations.Sqlite
 {
-    [DbContext(typeof(ContextoBD))]
-    partial class ContextoBDModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDbContextSqlite))]
+    partial class AppDbContextSqliteModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -58,7 +58,7 @@ namespace Cifralite.Web.Core.Data.Migrations
 
                     b.Property<string>("Acordes")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("IdMusica")
                         .HasColumnType("INTEGER");

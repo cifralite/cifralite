@@ -21,7 +21,7 @@
 @code {
     [Parameter]
     public int IdMusica { get; set; }
-    
+
     private bool _mostrarModalDeletarMusica = false;
 
     private void MostrarModalDeletarMusica()
@@ -34,10 +34,10 @@
         _mostrarModalDeletarMusica = false;
     }
 
-    private void DeletarMusica(int id)
+    private async Task DeletarMusica(int id)
     {
         FecharModalDeletarMusica();
-        MusicaService.RemoverMusica(id);
+        await MusicaService.RemoverMusica(id);
         IrParaListaDeMusicas();
     }
 
