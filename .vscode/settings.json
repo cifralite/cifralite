@@ -16,6 +16,6 @@
     "dotnet.defaultSolution": "Cifralite.sln",
     "explorer.fileNesting.patterns": {
         "*.razor": "${capture}.razor.css",
-        "appsettings.json": "appsettings.Development.json",
+        "appsettings.json": "appsettings.*.json"
     }
 }
