@@ -22,7 +22,7 @@
             }
         },
         {
-            "name": "Production",
+            "name": "Staging",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -35,7 +35,7 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Production"
+                "ASPNETCORE_ENVIRONMENT": "Staging"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -56,6 +56,26 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Testing"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Production",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Cifralite.Web/bin/Debug/net6.0/Cifralite.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Cifralite.Web",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"

@@ -15,7 +15,7 @@
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5003;http://localhost:5002",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Staging"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
     "Testing": {
@@ -25,6 +25,15 @@
       "applicationUrl": "https://localhost:5005;http://localhost:5004",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Testing"
+      }
+    },
+    "Staging": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:5007;http://localhost:5006",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
       }
     }
   }
