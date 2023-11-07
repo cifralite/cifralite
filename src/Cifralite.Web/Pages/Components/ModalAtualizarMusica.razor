@@ -2,7 +2,7 @@
 @inject NavigationManager NavigationManager
 
 <button id="botao-atualizar" @onclick="() => PrepararModalAtualizarMusica()">
-    <img src="/fotos/iconEditarMusica.png" alt="icone editar musica">
+    <img src="/fotos/iconEditarMusica.png" alt="icone editar musica" class="icon">
 </button>
 
 @if (_mostrarModalAdicionarMusica)
@@ -14,7 +14,7 @@
             <h1>Editar Música</h1>
 
             <h3 class="helper-modal">Informações</h3>
-            <div class="adicionar-musica-info">
+            <div class="adicionar-musica-info editar-musica-info">
                 <input @bind="Musica.Titulo" type="text" id="campo-titulo" class="input-texto" name="campo-titulo"
                     placeholder="Título">
                 <select @bind="Musica.Tom" id="campo-tom" class="input-texto" name="campo-tom" placeholder="Tom">
@@ -40,8 +40,7 @@
                 <textarea @bind="Conteudo" name="" id="conteudo-musica-texto" cols="30" rows="10"></textarea>
             </div>
 
-            <br>
-            <br>
+         
             <button id="botao-enviar" @onclick="AtualizarMusica">Editar</button>
             <button id="botao-fechar" @onclick="FecharModalAtualizarMusica">Fechar</button>
         </div>
