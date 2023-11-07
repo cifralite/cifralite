@@ -3,16 +3,17 @@ using System;
 using Cifralite.Web.Core.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Cifralite.Web.Core.Data.Migrations
+namespace Cifralite.Web.Core.Data.Migrations.Sqlite
 {
-    [DbContext(typeof(ContextoBD))]
-    [Migration("20231020003703_MigracaoInicial")]
-    partial class MigracaoInicial
+    [DbContext(typeof(AppDbContextSqlite))]
+    [Migration("20231102193309_EntidadeUsuarioAdicionada")]
+    partial class EntidadeUsuarioAdicionada
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +43,12 @@ namespace Cifralite.Web.Core.Data.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Musicas", (string)null);
                 });
@@ -55,7 +61,7 @@ namespace Cifralite.Web.Core.Data.Migrations
 
                     b.Property<string>("Acordes")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("IdMusica")
                         .HasColumnType("INTEGER");
@@ -72,6 +78,49 @@ namespace Cifralite.Web.Core.Data.Migrations
                     b.ToTable("Secoes", (string)null);
                 });
 
+            modelBuilder.Entity("Cifralite.Web.Core.Entities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1L)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Email" }, "IX_Usuario_Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuarios", (string)null);
+                });
+
+            modelBuilder.Entity("Cifralite.Web.Core.Entities.Musica", b =>
+                {
+                    b.HasOne("Cifralite.Web.Core.Entities.Usuario", "Usuario")
+                        .WithMany("Musicas")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("Cifralite.Web.Core.Entities.Secao", b =>
                 {
                     b.HasOne("Cifralite.Web.Core.Entities.Musica", "Musica")
@@ -86,6 +135,11 @@ namespace Cifralite.Web.Core.Data.Migrations
             modelBuilder.Entity("Cifralite.Web.Core.Entities.Musica", b =>
                 {
                     b.Navigation("Secoes");
+                });
+
+            modelBuilder.Entity("Cifralite.Web.Core.Entities.Usuario", b =>
+                {
+                    b.Navigation("Musicas");
                 });
 #pragma warning restore 612, 618
         }

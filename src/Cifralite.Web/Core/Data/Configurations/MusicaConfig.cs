@@ -1,4 +1,3 @@
-
 using Cifralite.Web.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -28,6 +27,10 @@ public class MusicaConfig : IEntityTypeConfiguration<Musica>
         builder.HasMany(x => x.Secoes)
             .WithOne(x => x.Musica)
             .HasForeignKey(x => x.IdMusica)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(x => x.Usuario)
+            .WithMany(x => x.Musicas)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

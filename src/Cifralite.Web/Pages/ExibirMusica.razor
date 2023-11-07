@@ -72,9 +72,9 @@
 
     private Musica Musica { get; set; } = new Musica();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        var musica = MusicaService.ObterMusicaPeloId(id);
+        var musica = await MusicaService.ObterMusicaPeloId(id);
         if (musica is null)
         {
             NavigationManager.NavigateTo("/");
@@ -82,6 +82,7 @@
         }
 
         Musica = musica;
+        Console.WriteLine($"Seções: {Musica.Secoes.Count()}");
     }
 
     private string ConstruirNotaEmTexto(Acorde acorde)

@@ -1,30 +1,32 @@
 using System.Text.RegularExpressions;
 using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cifralite.Web.Core.Services
 {
     public class MusicaService
     {
-        private readonly ContextoBD _contextoBD;
+        private readonly IDbContext _context;
 
-        public MusicaService(ContextoBD contextoBD)
+        public MusicaService(IDbContext context)
         {
-            _contextoBD = contextoBD;
+            _context = context;
         }
 
-        public List<Musica> ObterMusicas()
+        public async Task<List<Musica>> ObterMusicas()
         {
-            // return BancoDeDadosFake.Musicas;
-            return _contextoBD.Musicas.ToList();
+            var musicas = await _context.Musicas.AsNoTracking().ToListAsync();
+            return musicas;
         }
 
-        public Musica? ObterMusicaPeloId(int id)
+        public async Task<Musica?> ObterMusicaPeloId(int id)
         {
-            return BancoDeDadosFake.GetById(id);
+            var musica = await _context.Musicas.Include(x => x.Secoes).FirstOrDefaultAsync(x => x.Id == id);
+            return musica;
         }
 
-        public int AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
+        public async Task<int> AdicionarMusica(string titulo, string tom, int tempo, string musicaEmTexto)
         {
             var musica = new Musica
             {
@@ -34,11 +36,13 @@ namespace Cifralite.Web.Core.Services
                 Artista = "Desconhecido"
             };
 
-            musica.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
-            _contextoBD.Musicas.Add(musica);
-            _contextoBD.SaveChanges();
+            foreach (var secao in FormatarMusicaParaObjetos(musicaEmTexto))
+            {
+                musica.Secoes.Add(secao);
+            }
+            await _context.Musicas.AddAsync(musica);
+            await _context.SaveChangesAsync();
 
-            BancoDeDadosFake.Add(musica);
             return musica.Id;
         }
 
@@ -98,15 +102,23 @@ namespace Cifralite.Web.Core.Services
             return secoes;
         }
 
-        public void RemoverMusica(int id)
+        public async Task RemoverMusica(int id)
         {
-            BancoDeDadosFake.Remove(id);
+            var musica = await _context.Musicas.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (musica is not null)
+            {
+                _context.Musicas.Remove(musica);
+            }
+
+            await _context.SaveChangesAsync();
         }
 
-        public void AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
+        public async Task AtualizarMusica(Musica musicaEditada, string musicaEmTexto)
         {
             musicaEditada.Secoes = FormatarMusicaParaObjetos(musicaEmTexto);
-            BancoDeDadosFake.Update(musicaEditada);
+            _context.Musicas.Update(musicaEditada);
+            await _context.SaveChangesAsync();
         }
     }
 }
