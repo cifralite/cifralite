@@ -1,5 +1,6 @@
 using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,11 +18,13 @@ if (builder.Environment.IsEnvironment("Testing"))
     {
         options.UseInMemoryDatabase("Cifralite");
     });
+    builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 }
 
 else if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<IDbContext, AppDbContextSqlite>();
+    builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContextSqlite>();
 }
 
 else
@@ -30,8 +33,8 @@ else
     {
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
     });
+    builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 }
-
 
 var app = builder.Build();
 
@@ -46,6 +49,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
