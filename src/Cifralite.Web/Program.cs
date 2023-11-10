@@ -20,15 +20,16 @@ if (builder.Environment.IsEnvironment("Testing"))
     {
         options.UseInMemoryDatabase("Cifralite");
     });
-    builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
-    // builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
+    builder.Services.AddDbContext<IDbContext, AppDbContextSqlite>();
+    builder.Services.AddIdentity<Usuario, IdentityRole<int>>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
+    // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
 }
 
 else if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<IDbContext, AppDbContextSqlite>();
-    builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContextSqlite>();
-    // builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContextSqlite>();
+    builder.Services.AddIdentity<Usuario, IdentityRole<int>>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContextSqlite>();
+    // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContextSqlite>();
 }
 
 else

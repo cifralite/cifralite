@@ -1,4 +1,5 @@
 using Cifralite.Web.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +15,7 @@ public interface IDbContext
     int SaveChanges();
 }
 
-public class AppDbContextSqlite : IdentityDbContext, IDbContext
+public class AppDbContextSqlite : IdentityDbContext<Usuario, IdentityRole<int>, int>, IDbContext
 {
     public AppDbContextSqlite(DbContextOptions<AppDbContextSqlite> options) : base(options)
     {
@@ -36,7 +37,7 @@ public class AppDbContextSqlite : IdentityDbContext, IDbContext
     }
 }
 
-public class AppDbContext : IdentityDbContext, IDbContext
+public class AppDbContext : IdentityDbContext<Usuario, IdentityRole<int>, int>, IDbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -48,6 +49,7 @@ public class AppDbContext : IdentityDbContext, IDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
 }
