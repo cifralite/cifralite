@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#TelaDeCadastro, #TelaDeLogin {
+#TelaDeLogin {
     background-color: white;
     margin: auto;
     min-width: 10rem;
@@ -15,12 +15,12 @@
     margin: auto;
 }
 
-#Formulario input, button{
+::deep .campoDeLogin, button{
     padding: 1rem;
     margin-bottom: 1rem;
 }
 
-#BotaoCadastrar, #BotaoEntrar {
+#BotaoEntrar {
     max-width: 35%;
     margin: 0 auto 1rem auto;
 }

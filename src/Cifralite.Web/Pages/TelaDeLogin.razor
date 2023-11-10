@@ -1,26 +1,41 @@
 @page "/login/"
 @inject UsuarioService UsuarioService
 @inject NavigationManager NavigationManager
+@attribute [Authorize]
 
 <PageTitle>Login - Cifralite</PageTitle>
 
 <link rel="stylesheet" href="InterfaceDeCadastroELogin.css">
 
-<div id="TelaDeCadastro">
+<div id="TelaDeLogin">
     <h1>Fazer Login</h1>
     <p>Bem-vindo ao <strong>Cifralite!</strong></p>
 
-    <div id="Formulario">
-        <input @bind="Email" type="email" placeholder="E-mail" required>
-        <input @bind="Senha" type="password" placeholder="Senha" required>
-
-        <button id="BotaoEntrar">Entrar</button>
-        <a href="#">Esqueci minha senha</a>
-        <a href="#">Já tenho uma conta</a>
-    </div>
+    <EditForm Model="usuario" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
+        <div id="Formulario">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <InputText id="email" class="campoDeLogin" @bind-Value="usuario.Email" type="email" placeholder="E-mail" />
+            <InputText id="senha" class="campoDeLogin" @bind-Value="usuario.Senha" type="password" placeholder="Senha" />
+            <button type="submit" id="BotaoEntrar">Entrar</button>
+            <a href="#">Esqueci minha senha</a>
+        </div>
+    </EditForm>
 </div>
 
 @code {
-    private string Email {get; set;} = string.Empty;
-    private string Senha {get; set;} = string.Empty;
+    private LoginModel usuario = new LoginModel();
+    private void HandleValidSubmit() {
+        Console.WriteLine("É nois");
+    }
+    private void HandleInvalidSubmit() {
+        Console.WriteLine("Não É nois");
+    }
+
+    private class LoginModel {
+        [Required(ErrorMessage = "O E-mail é obrigatório")]
+        public string Email {get;set;} = string.Empty;
+        [Required(ErrorMessage = "A senha é obrigatória")]
+        public string Senha {get;set;} = string.Empty;
+    }
 }

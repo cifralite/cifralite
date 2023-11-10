@@ -1,5 +1,6 @@
 using Cifralite.Web.Core.Data;
 using Cifralite.Web.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cifralite.Web.Core.Services
@@ -7,10 +8,14 @@ namespace Cifralite.Web.Core.Services
     public class UsuarioService
     {
         private readonly IDbContext _context;
+        private readonly UserManager<Usuario> _userManager;
+        private readonly SignInManager<Usuario> _signInManager;
 
-        public UsuarioService(IDbContext context)
+        public UsuarioService(IDbContext context, UserManager<Usuario> userManager, SignInManager<Usuario> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public async Task<List<Usuario>> ObterUsuarios()
@@ -36,11 +41,14 @@ namespace Cifralite.Web.Core.Services
             var usuario = new Usuario
             {
                 Nome = nome,
+                UserName = nome,
                 Email = email,
                 Senha = senha
             };
 
-            await _context.Usuarios.AddAsync(usuario);
+            await _userManager.CreateAsync(usuario, senha);
+
+            // await _context.Usuarios.AddAsync(usuario);
             await _context.SaveChangesAsync();
         }
 
