@@ -64,5 +64,21 @@ namespace Cifralite.Web.Core.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task<bool> Login(string email, string senha) 
+        {
+            var usuario = await _userManager.FindByEmailAsync(email);
+
+            if (usuario != null) {
+                var resultado = await _signInManager.PasswordSignInAsync(usuario, senha, false, false);
+                if (resultado.Succeeded) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
     }
 }

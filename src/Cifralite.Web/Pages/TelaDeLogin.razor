@@ -15,17 +15,30 @@
         <div id="Formulario">
             <DataAnnotationsValidator />
             <ValidationSummary />
-            <InputText id="email" class="campoDeLogin" @bind-Value="usuario.Email" type="email" placeholder="E-mail" />
-            <InputText id="senha" class="campoDeLogin" @bind-Value="usuario.Senha" type="password" placeholder="Senha" />
+            <InputText id="Email" class="campoDeLogin" @bind-Value="usuario.Email" type="email" placeholder="E-mail" />
+            <InputText id="Senha" class="campoDeLogin" @bind-Value="usuario.Senha" type="password" placeholder="Senha" />
             <button type="submit" id="BotaoEntrar">Entrar</button>
             <a href="#">Esqueci minha senha</a>
         </div>
+        @if (mensagemDeErro != string.Empty) {
+            <div id="MenssagemDeErro">
+                <p>@mensagemDeErro</p>
+            </div>
+        }
     </EditForm>
 </div>
 
 @code {
     private LoginModel usuario = new LoginModel();
-    private void HandleValidSubmit() {
+    public string mensagemDeErro {get;set;} = string.Empty;
+    private async Task HandleValidSubmit() {
+        mensagemDeErro = string.Empty;
+        var requerimento = await UsuarioService.Login(usuario.Email, usuario.Senha);
+        if (requerimento) {
+            NavigationManager.NavigateTo("/");
+        } else {
+            mensagemDeErro = "O campo E-mail ou Senha é inválido";
+        }
         Console.WriteLine("É nois");
     }
     private void HandleInvalidSubmit() {

@@ -31,3 +31,9 @@
     margin-bottom: 0.5rem;
     padding: 0rem;
 }
+
+#MenssagemDeErro {
+    background-color: #A12338;
+    padding: 1rem;
+    color: white;
+}
