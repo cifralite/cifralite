@@ -69,7 +69,7 @@ namespace Cifralite.Web.Core.Services
             var usuario = await _userManager.FindByEmailAsync(email);
 
             if (usuario != null) {
-                var resultado = await _signInManager.PasswordSignInAsync(usuario, senha, false, false);
+                var resultado = await _signInManager.CheckPasswordSignInAsync(usuario, senha, false);
                 if (resultado.Succeeded) {
                     return true;
                 } else {

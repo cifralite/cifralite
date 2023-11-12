@@ -9,26 +9,33 @@
     <h1>Cadastre-se</h1>
     <p>Crie agora sua conta no <strong>Cifralite</strong></p>
 
-    <div id="Formulario">
-        <input @bind="Nome" type="text" placeholder="Nome" required>
-        <input @bind="Email" type="email" placeholder="E-mail" required>
-        <input @bind="Senha" type="password" placeholder="Senha" required>
+    <EditForm Model="_novoUsuario" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <div id="Formulario">
+            <InputText class="campoDeRegistro" @bind-Value="_novoUsuario.Nome" type="text" placeholder="Nome" required />
+            <InputText class="campoDeRegistro" @bind-Value="_novoUsuario.Email" type="email" placeholder="E-mail" required />
+            <InputText class="campoDeRegistro" @bind-Value="_novoUsuario.Senha" type="password" placeholder="Senha" required />
 
-        <button id="BotaoCadastrar" @onclick="AdicionarUsuario">Criar conta</button>
-        <a href="#">Esqueci minha senha</a>
-        <a href="#">Já tenho uma conta</a>
-    </div>
+            <button type="submit" id="BotaoCadastrar">Criar conta</button>
+            <a href="#">Esqueci minha senha</a>
+            <a href="#">Já tenho uma conta</a>
+        </div>
+    </EditForm>
 </div>
 
 @code {
-    private string Nome {get; set;} = string.Empty;
-    private string Email {get; set;} = string.Empty;
-    private string Senha {get; set;} = string.Empty;
+    private RegistroModel _novoUsuario {get; set;} = new RegistroModel();
+    private async Task HandleValidSubmit() {
+        await UsuarioService.AdicionarUsuario(_novoUsuario.Nome, _novoUsuario.Email, _novoUsuario.Senha);
+        NavigationManager.NavigateTo("/login/");
+    }
 
-    private async Task AdicionarUsuario() {
-        if (Nome != "" && Email != "" && Senha != "") {
-            await UsuarioService.AdicionarUsuario(Nome, Email, Senha);
-            NavigationManager.NavigateTo("/");
-        } 
+    private class RegistroModel {
+        [Required(ErrorMessage = "O Nome é obrigatório")]
+        public string Nome {get; set;} = string.Empty;
+        [Required(ErrorMessage = "O E-mail é obrigatório")]
+        public string Email {get; set;} = string.Empty;
+        [Required(ErrorMessage = "A Senha é obrigatória")]
+        public string Senha {get; set;} = string.Empty;
     }
 }

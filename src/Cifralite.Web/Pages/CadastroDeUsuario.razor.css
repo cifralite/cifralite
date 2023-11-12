@@ -15,7 +15,7 @@
     margin: auto;
 }
 
-#Formulario input, button{
+::deep .campoDeRegistro, button{
     padding: 1rem;
     margin-bottom: 1rem;
 }
