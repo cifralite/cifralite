@@ -1,7 +1,6 @@
 @page "/cadastro/"
 @inject UsuarioService UsuarioService
 @inject NavigationManager NavigationManager
-@attribute [Authorize]
 
 <PageTitle>Cadastra-se no Cifralite</PageTitle>
 
@@ -31,11 +30,11 @@
     }
 
     private class RegistroModel {
-        [Required(ErrorMessage = "O Nome é obrigatório")]
+        
         public string Nome {get; set;} = string.Empty;
-        [Required(ErrorMessage = "O E-mail é obrigatório")]
+        
         public string Email {get; set;} = string.Empty;
-        [Required(ErrorMessage = "A Senha é obrigatória")]
+        
         public string Senha {get; set;} = string.Empty;
     }
 }
