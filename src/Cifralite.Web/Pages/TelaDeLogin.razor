@@ -40,9 +40,7 @@
     }
 
     private class LoginModel {
-        [Required(ErrorMessage = "O E-mail é obrigatório")]
         public string Email {get;set;} = string.Empty;
-        [Required(ErrorMessage = "A senha é obrigatória")]
         public string Senha {get;set;} = string.Empty;
     }
 }

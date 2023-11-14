@@ -3,6 +3,7 @@ using Cifralite.Web.Core.Entities;
 using Cifralite.Web.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,14 +23,12 @@ if (builder.Environment.IsEnvironment("Testing"))
     });
     builder.Services.AddDbContext<IDbContext, AppDbContext>();
     builder.Services.AddIdentity<Usuario, IdentityRole<int>>().AddEntityFrameworkStores<AppDbContext>();
-    // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
 }
 
 else if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<IDbContext, AppDbContextSqlite>();
     builder.Services.AddIdentity<Usuario, IdentityRole<int>>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContextSqlite>();
-    // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContextSqlite>();
 }
 
 else
@@ -40,6 +39,13 @@ else
     });
     builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 }
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login/";
+        options.AccessDeniedPath = "/login/";
+    });
 
 var app = builder.Build();
 
