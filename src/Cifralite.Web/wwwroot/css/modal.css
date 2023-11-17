@@ -8,8 +8,7 @@
     box-shadow: 0 0 1em rgb(0 0 0 / .3);
     width: 85%;
     background-color: rgb(240, 240, 240);
-    max-width: 500px;
-    max-height: 120rem;
+    max-width: 530px;
 }
 
 #adicionar-musica-modal>h1 {
@@ -21,7 +20,7 @@
     background-color: #247ba0;
     color: whitesmoke;
     text-align: center;
-    font-size: 32px;
+    font-size: 28px;
 }
 
 #adicionar-musica-modal>h3 {
@@ -86,6 +85,7 @@
     margin-top: 1rem;
     width: 100%;
     max-width: 478px;
+    height: 40%;
 }
 
 .musica-texto textarea {
@@ -153,4 +153,16 @@
 a {
     text-decoration: none;
     color: white;
+}
+
+#iconLixeira{
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.icon{
+    width: 100%;
+    max-width: 100px;
 }
